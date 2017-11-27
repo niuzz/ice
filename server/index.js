@@ -9,7 +9,7 @@ config.dev = !(process.env === 'production')
 const r = path => resolve(__dirname, path)
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 9000
-const MIDDLEWARE = ['router']
+const MIDDLEWARE = ['database', 'router']
 const useMiddleware = (app) => {
   // 中间件的个数不定，通过 Ramda 的特性，从右往左进行函数组合，右侧函数的返回结果总是左侧函数的输入参数
   // R.map(console.log)([1, 2, 3])

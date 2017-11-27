@@ -17,7 +17,6 @@ export const router = app => {
     const str = [token, timestamp, nonce].sort().join('')
     const sha = sha1(str)
     if (sha === signature) {
-      console.log(true)
       ctx.body = echostr
     } else {
       ctx.body = 'fail'
