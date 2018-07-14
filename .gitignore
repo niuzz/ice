@@ -1,24 +1,23 @@
 # dependencies
-node_modules
+/**/node_modules
 
 # logs
-npm-debug.log
-
-# Nuxt build
-.nuxt
+/**/npm-debug.log
 
 # Nuxt generate
-dist
+/**/dist
 
 #build
-build
+/**/build
 
 #.idea
-.idea
+/**/.idea
+/**/.vscode
 
 #ecosystem
-#ecosystem.json
+/**/ecosystem.json
 
-#natapp config
-config.ini
-natapp
+#natapp
+/**/natapp
+
+config
