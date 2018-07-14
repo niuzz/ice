@@ -18,3 +18,7 @@ build
 
 #ecosystem
 #ecosystem.json
+
+#natapp config
+config.ini
+natapp

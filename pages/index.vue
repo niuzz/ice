@@ -14,5 +14,6 @@
 .title
 {
   margin: 50px 0;
+  color: #56abfe;
 }
 </style>
