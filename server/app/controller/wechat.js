@@ -3,7 +3,6 @@
 const Controller = require('egg').Controller;
 const sha1 = require('sha1');
 
-
 class Wechat extends Controller {
   async hear() {
     const { ctx, app } = this;
@@ -22,6 +21,13 @@ class Wechat extends Controller {
     } else {
       ctx.body = 'Failed';
     }
+  }
+
+  async getClient() {
+    const { ctx } = this;
+    const wechatClient = await ctx.service.wechat.getWechatClient();
+    console.log(wechatClient);
+    ctx.body = 'ok';
   }
 }
 
