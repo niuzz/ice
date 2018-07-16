@@ -26,8 +26,7 @@ class Wechat extends Controller {
   async getClient() {
     const { ctx } = this;
     const wechatClient = await ctx.service.wechat.getWechatClient();
-    console.log(wechatClient);
-    ctx.body = 'ok';
+    ctx.body = wechatClient;
   }
 }
 

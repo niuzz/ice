@@ -4,8 +4,7 @@ const Service = require('egg').Service;
 const WechatClient = require('../wechat-lib');
 
 class WechatService extends Service {
-  constructor(ctx) {
-    super(ctx);
+  async getWechatClient() {
     const { config } = this.app;
     const mongoose = this.app.mongoose;
     const Token = mongoose.model('Token');
@@ -19,10 +18,7 @@ class WechatService extends Service {
         saveAccessToken: async data => await Token.saveAccessToken(data),
       },
     };
-  }
-
-  async getWechatClient() {
-    const wechat = new WechatClient(WechatService.wechatConfig.wechat);
+    const wechat = new WechatClient(wechatConfig.wechat);
     return wechat;
   }
 }
