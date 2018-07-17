@@ -30,9 +30,9 @@ module.exports = app => {
   });
 
   TokenSchema.statics = {
+
     async getAccessToken() {
       const token = await this.findOne({ name: 'access_token' }).exec();
-
       return token;
     },
 

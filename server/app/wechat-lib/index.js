@@ -70,7 +70,6 @@ module.exports = class Wechat {
 
     try {
       const response = await request(options);
-      console.log(response);
       return response;
     } catch (error) {
       console.error(error);
@@ -78,7 +77,6 @@ module.exports = class Wechat {
   }
 
   async fetchAccessToken() {
-
     // let data = await this.getAccessToken();
     let data = '';
     if (!this.isValidToken(data, 'access_token')) {
@@ -86,7 +84,6 @@ module.exports = class Wechat {
     }
 
     await this.saveAccessToken(data);
-
     return data;
   }
 
