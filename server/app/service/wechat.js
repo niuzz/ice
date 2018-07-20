@@ -14,12 +14,12 @@ class WechatService extends Service {
         appID: config.authorization.appID,
         appSecret: config.authorization.appSecret,
         token: config.authorization.token,
-        getAccessToken: async () => await Token.getAccessToken(),
-        saveAccessToken: async data => await Token.saveAccessToken(data),
+        getAccessToken: () => Token.getAccessToken(),
+        saveAccessToken: data => Token.saveAccessToken(data),
       },
     };
     const wechat = new WechatClient(wechatConfig.wechat);
-    console.log(await wechat.getAccessToken());
+    wechat.saveAccessToken({ expires_in: 111, access_token: '222' });
     return wechat;
   }
 }

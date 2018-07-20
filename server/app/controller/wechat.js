@@ -28,6 +28,12 @@ class Wechat extends Controller {
     const wechatClient = await ctx.service.wechat.getWechatClient();
     ctx.body = wechatClient;
   }
+
+  async mo() {
+    const { ctx } = this;
+    const result = ctx.model.User.find({}).exec();
+    ctx.body = result;
+  }
 }
 
 module.exports = Wechat;
