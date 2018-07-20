@@ -19,6 +19,7 @@ class WechatService extends Service {
       },
     };
     const wechat = new WechatClient(wechatConfig.wechat);
+    console.log(await wechat.getAccessToken());
     return wechat;
   }
 }
