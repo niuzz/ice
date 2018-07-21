@@ -77,8 +77,7 @@ module.exports = class Wechat {
   }
 
   async fetchAccessToken() {
-    // let data = await this.getAccessToken();
-    let data = '';
+    let data = await this.getAccessToken();
     if (!this.isValidToken(data, 'access_token')) {
       data = await this.updateAccessToken();
     }

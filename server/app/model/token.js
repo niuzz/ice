@@ -7,7 +7,7 @@ module.exports = app => {
 
   const TokenSchema = new Schema({
     name: { type: String },
-    token: { type: String },
+    access_token: { type: String },
     expires_in: { type: Number },
     meta: {
       createdAt: {
@@ -49,10 +49,11 @@ module.exports = app => {
           expires_in: data.expires_in,
           access_token: data.access_token,
         });
+        console.log(token);
       }
-
       try {
         await token.save();
+        console.log('存储成功, access_token: ' + token.access_token);
       } catch (e) {
         console.log('存储失败');
         console.log(e);
