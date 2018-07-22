@@ -5,8 +5,13 @@ const util = require('../wechat-lib/util');
 const reply = require('../wechat-lib/reply');
 
 module.exports = () => {
-  return async function signature(ctx) {
+  return async function signature(ctx, next) {
     const { app } = ctx;
+    if (ctx.request.url.indexOf('/api') > -1) {
+      console.log('api');
+      await next();
+      return false;
+    }
     const { authorization } = app.config;
     const token = authorization.token;
     const {
@@ -17,10 +22,6 @@ module.exports = () => {
     } = ctx.query;
     const str = [ token, timestamp, nonce ].sort().join('');
     const sha = sha1(str);
-    console.log('-----------------------');
-    console.log(ctx.request.url);
-    console.log('-----------------------');
-
     if (ctx.method === 'GET') { // 如果是GET请求，为微信服务器发送Token验证
       if (sha === signature) {
         ctx.body = echostr;
@@ -52,10 +53,8 @@ module.exports = () => {
       ctx.status = 200;
       ctx.type = 'application/xml';
       ctx.body = xml;
-
-      // console.log(xml);
-
     }
+
   };
 };
 

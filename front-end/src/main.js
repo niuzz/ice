@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import wx from 'weixin-js-sdk'
 
 Vue.config.productionTip = false
+
+Vue.prototype.$wx = wx
 
 /* eslint-disable no-new */
 new Vue({

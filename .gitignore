@@ -8,7 +8,7 @@
 /**/dist
 
 #build
-/**/build
+# /**/build
 
 #.idea
 /**/.idea
@@ -20,4 +20,4 @@
 #natapp
 /**/natapp
 
-/**/config
+/**/config/config.default.js
