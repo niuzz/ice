@@ -1,18 +1,21 @@
 'use strict';
 
 const request = require('request-promise');
+const fs = require('fs');
+const _ = require('lodash');
+const { sign } = require('./util');
 
 const base = 'https://api.weixin.qq.com/cgi-bin/';
 const api = {
   accessToken: base + 'token?grant_type=client_credential',
-  temporary: {
+  temporary: { // 临时素材
     upload: base + 'media/upload?',
     fetch: base + 'media/get?',
   },
-  permanent: {
+  permanent: { // 永久素材
     upload: base + 'material/add_material?',
-    uploadNews: base + 'material/add_news?',
-    uploadNewsPic: base + 'media/uploadimg?',
+    uploadNews: base + 'material/add_news?', // 图文
+    uploadNewsPic: base + 'media/uploadimg?', // 图文图片
     fetch: base + 'material/get_material?',
     del: base + 'material/del_material?',
     update: base + 'material/update_news?',
@@ -110,6 +113,278 @@ module.exports = class Wechat {
       return true;
     }
     return false;
+  }
+
+  async handle(operation, ...args) {
+    const tokenData = await this.fetchAccessToken();
+    const options = this[operation](tokenData.access_token, ...args);
+    const data = await this.request(options);
+
+    return data;
+  }
+
+  uploadMaterial(token, type, material, permanent) {
+    let form = {};
+    let url = api.temporary.upload;
+
+    if (permanent) {
+      url = api.permanent.upload;
+
+      _.extend(form, permanent);
+    }
+
+    if (type === 'pic') {
+      url = api.permanent.uploadNewsPic;
+    }
+
+    if (type === 'news') {
+      url = api.permanent.uploadNews;
+      form = material;
+    } else {
+      form.media = fs.createReadStream(material);
+    }
+
+    let uploadUrl = url + 'access_token=' + token;
+
+    if (!permanent) {
+      uploadUrl += '&type=' + type;
+    } else {
+      if (type !== 'news') {
+        form.access_token = token;
+      }
+    }
+
+    const options = {
+      method: 'POST',
+      url: uploadUrl,
+      json: true,
+    };
+
+    if (type === 'news') {
+      options.body = form;
+    } else {
+      options.formData = form;
+    }
+
+    return options;
+  }
+
+  fetchMaterial(token, mediaId, type, permanent) {
+    const form = {};
+    let fetchUrl = api.temporary.fetch;
+
+    if (permanent) {
+      fetchUrl = api.permanent.fetch;
+    }
+
+    let url = fetchUrl + 'access_token=' + token;
+    const options = { method: 'POST', url };
+
+    if (permanent) {
+      form.media_id = mediaId;
+      form.access_token = token;
+      options.body = form;
+    } else {
+      if (type === 'video') {
+        url = url.replace('https://', 'http://');
+      }
+
+      url += '&media_id=' + mediaId;
+    }
+
+    return options;
+  }
+
+  deleteMaterial(token, mediaId) {
+    const form = {
+      media_id: mediaId,
+    };
+    const url = api.permanent.del + 'access_token=' + token + '&media_id' + mediaId;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  updateMaterial(token, mediaId, news) {
+    const form = {
+      media_id: mediaId,
+    };
+
+    _.extend(form, news);
+    const url = api.permanent.update + 'access_token=' + token + '&media_id=' + mediaId;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  countMaterial(token) {
+    const url = api.permanent.count + 'access_token=' + token;
+
+    return { method: 'POST', url };
+  }
+
+  batchMaterial(token, options) {
+    options.type = options.type || 'image';
+    options.offset = options.offset || 0;
+    options.count = options.count || 10;
+
+    const url = api.permanent.batch + 'access_token=' + token;
+
+    return { method: 'POST', url, body: options };
+  }
+
+  createTag(token, name) {
+    const form = {
+      tag: {
+        name,
+      },
+    };
+    const url = api.tag.create + 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  fetchTags(token) {
+    const url = api.tag.fetch + 'access_token=' + token;
+
+    return { url };
+  }
+
+  updateTag(token, tagId, name) {
+    const form = {
+      tag: {
+        id: tagId,
+        name,
+      },
+    };
+
+    const url = api.tag.update + 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  delTag(token, tagId) {
+    const form = {
+      tag: {
+        id: tagId,
+      },
+    };
+
+    const url = api.tag.del + 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  fetchTagUsers(token, tagId, openId) {
+    const form = {
+      tagid: tagId,
+      next_openid: openId || '',
+    };
+    const url = api.tag.fetchUsers + 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  // unTag true|false
+  batchTag(token, openIdList, tagId, unTag) {
+    const form = {
+      openid_list: openIdList,
+      tagid: tagId,
+    };
+    let url = api.tag.batchTag;
+
+    if (unTag) {
+      url = api.tag.batchUnTag;
+    }
+
+    url += 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  getTagList(token, openId) {
+    const form = {
+      openid: openId,
+    };
+    const url = api.tag.getTagList + 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  remarkUser(token, openId, remark) {
+    const form = {
+      openid: openId,
+      remark,
+    };
+    const url = api.user.remark + 'access_token=' + token;
+
+    return { method: 'POST', url, body: form };
+  }
+
+  getUserInfo(token, openId, lang) {
+    const url = `${api.user.info}access_token=${token}&openid=${openId}&lang=${lang || 'zh_CN'}`;
+
+    return { url };
+  }
+
+  batchUserInfo(token, userList) {
+    const url = api.user.batchInfo + 'access_token=' + token;
+    const form = {
+      user_list: userList,
+    };
+
+    return { method: 'POST', url, body: form };
+  }
+
+  fetchUserList(token, openId) {
+    const url = `${api.user.fetchUserList}access_token=${token}&next_openid=${openId || ''}`;
+
+    return { url };
+  }
+
+  createMenu(token, menu) {
+    const url = api.menu.create + 'access_token=' + token;
+
+    return { method: 'POST', url, body: menu };
+  }
+
+  getMenu(token) {
+    const url = api.menu.get + 'access_token=' + token;
+
+    return { url };
+  }
+
+  delMenu(token) {
+    const url = api.menu.del + 'access_token=' + token;
+
+    return { url };
+  }
+
+  addConditionMenu(token, menu, rule) { // 个性化菜单
+    const url = api.menu.addCondition + 'access_token=' + token;
+    const form = {
+      button: menu,
+      matchrule: rule,
+    };
+
+    return { method: 'POST', url, body: form };
+  }
+
+  delConditionMenu(token, menuId) {
+    const url = api.menu.delCondition + 'access_token=' + token;
+    const form = {
+      menuid: menuId,
+    };
+
+    return { method: 'POST', url, body: form };
+  }
+
+  getCurrentMenuInfo(token) {
+    const url = api.menu.getInfo + 'access_token=' + token;
+
+    return { url };
+  }
+
+  sign(ticket, url) {
+    return sign(ticket, url);
   }
 
 };

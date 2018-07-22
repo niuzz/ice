@@ -5,22 +5,8 @@ const Controller = require('egg').Controller;
 
 class Wechat extends Controller {
   async hear() {
-    // const { ctx, app } = this;
-    // const { authorization } = app.config;
-    // const token = authorization.token;
-    // const {
-    //   signature,
-    //   nonce,
-    //   timestamp,
-    //   echostr,
-    // } = ctx.query;
-    // const str = [ token, timestamp, nonce ].sort().join('');
-    // const sha = sha1(str);
-    // if (sha === signature) {
-    //   ctx.body = echostr;
-    // } else {
-    //   ctx.body = 'Failed';
-    // }
+    const { ctx } = this;
+    ctx.body = 'wechat hear ok';
   }
 
   async getClient() {

@@ -7,6 +7,8 @@
     "egg": "^2.2.1",
     "egg-mongoose": "^3.1.0",
     "egg-scripts": "^2.5.0",
+    "ejs": "^2.6.1",
+    "lodash": "^4.17.10",
     "raw-body": "^2.3.3",
     "request-promise": "^4.2.2",
     "sha1": "^1.1.1",
