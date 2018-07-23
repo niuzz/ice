@@ -4,8 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import wx from 'weixin-js-sdk'
+import ElementUI from 'element-ui'
+import './element-variables.scss'
 
 Vue.config.productionTip = false
+
+Vue.use(ElementUI)
 
 Vue.prototype.$wx = wx
 
