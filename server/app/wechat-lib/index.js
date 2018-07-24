@@ -61,8 +61,8 @@ module.exports = class Wechat {
     this.appSecret = opts.appSecret;
     this.getAccessToken = opts.getAccessToken;
     this.saveAccessToken = opts.saveAccessToken;
-    // this.getTicket = opts.getTicket;
-    // this.saveTicket = opts.saveTicket;
+    this.getTicket = opts.getTicket;
+    this.saveTicket = opts.saveTicket;
 
     this.fetchAccessToken();
   }

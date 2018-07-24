@@ -6,7 +6,7 @@ import { Message } from 'element-ui'
 import qs from 'qs'
 
 const service = axios.create({
-  baseURL: '/index.php/api/', // baseUrl
+  baseURL: 'http://natapp.niuzhuangzhi.com/api/', // baseUrl
   timeout: 5000, // 超时时间
   headers: { 'Content-Type': 'application/json' },
   transformRequest: [function (data) {
