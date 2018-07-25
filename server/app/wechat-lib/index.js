@@ -101,6 +101,30 @@ module.exports = class Wechat {
     return data;
   }
 
+  async fetchTicket(token) {
+    let data = await this.getTicket();
+
+    if (!this.isValidToken(data, 'ticket')) {
+      data = await this.updateTicket(token);
+    }
+
+    await this.saveTicket(data);
+
+    return data;
+  }
+
+  async updateTicket(token) {
+    const url = api.ticket.get + '&access_token=' + token + '&type=jsapi';
+
+    const data = await this.request({ url });
+    const now = (new Date().getTime());
+    const expiresIn = now + (data.expires_in - 20) * 1000;
+
+    data.expires_in = expiresIn;
+
+    return data;
+  }
+
   isValidToken(data, name) {
     if (!data || !data[name] || !data.expires_in) {
       return false;

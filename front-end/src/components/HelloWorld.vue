@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { test } from '@/api/'
+import { signature } from '@/api/'
 export default {
   name: 'HelloWorld',
   data () {
@@ -21,7 +21,10 @@ export default {
   },
   methods: {
     test () {
-      test({user: 1}).then(response => {})
+      const url = window.location.href
+      signature({ url }).then(response => {
+        console.log(response)
+      })
     }
   }
 }
