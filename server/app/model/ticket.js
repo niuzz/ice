@@ -39,6 +39,7 @@ module.exports = app => {
     },
 
     async saveTicket(data) {
+
       let ticket = await this.findOne({ name: 'ticket' }).exec();
       if (ticket) {
         ticket.ticket = data.ticket;

@@ -81,6 +81,8 @@ module.exports = class Wechat {
 
   async fetchAccessToken() {
     let data = await this.getAccessToken();
+
+
     if (!this.isValidToken(data, 'access_token')) {
       data = await this.updateAccessToken();
     }
@@ -91,12 +93,12 @@ module.exports = class Wechat {
 
   async updateAccessToken() {
     const url = api.accessToken + '&appid=' + this.appID + '&secret=' + this.appSecret;
-
     const data = await this.request({ url });
     const now = (new Date().getTime());
     const expiresIn = now + (data.expires_in - 20) * 1000;
 
     data.expires_in = expiresIn;
+
 
     return data;
   }

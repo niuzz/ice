@@ -23,7 +23,21 @@ export default {
     test () {
       const url = window.location.href
       signature({ url }).then(response => {
-        console.log(response)
+        if (response.data.success) {
+          const params = response.data.params
+          this.$wx.config({
+            debug: true,
+            appId: params.appId,
+            timestamp: params.timestamp,
+            nonceStr: params.noncestr,
+            signature: params.signature,
+            jsApiList: ['hideAllNonBaseMenuItem', 'previewImage', 'chooseImage']
+          })
+          this.$wx.ready(() => {
+            this.$wx.hideAllNonBaseMenuItem()
+            console.log('success')
+          })
+        }
       })
     }
   }

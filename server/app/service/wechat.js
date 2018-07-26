@@ -32,6 +32,7 @@ class WechatService extends Service {
     const wechatClient = await ctx.service.wechat.getWechatClient();
     const data = await wechatClient.fetchAccessToken();
     const token = data.access_token;
+
     const ticketData = await wechatClient.fetchTicket(token);
     const ticket = ticketData.ticket;
 

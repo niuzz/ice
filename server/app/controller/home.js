@@ -7,8 +7,7 @@ class HomeController extends Controller {
     this.ctx.body = 'hi, egg';
   }
   async api() {
-    console.log(this.ctx.query);
-    this.ctx.body = 'api111';
+    this.ctx.body = 'this is api test';
   }
 }
 
