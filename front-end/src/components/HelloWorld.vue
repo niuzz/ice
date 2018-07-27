@@ -3,7 +3,8 @@
     <h1>
       test-page
     </h1>
-    <el-button type='primary' @click="test">test server</el-button>
+    <el-button type='primary' @click="test('sdk')">test sdk</el-button>
+    <el-button type='primary' @click="test('oauth')">test oauth</el-button>
   </div>
 </template>
 
@@ -20,25 +21,29 @@ export default {
     console.log(this.$wx)
   },
   methods: {
-    test () {
-      const url = window.location.href
-      signature({ url }).then(response => {
-        if (response.data.success) {
-          const params = response.data.params
-          this.$wx.config({
-            debug: true,
-            appId: params.appId,
-            timestamp: params.timestamp,
-            nonceStr: params.noncestr,
-            signature: params.signature,
-            jsApiList: ['hideAllNonBaseMenuItem', 'previewImage', 'chooseImage']
-          })
-          this.$wx.ready(() => {
-            this.$wx.hideAllNonBaseMenuItem()
-            console.log('success')
-          })
-        }
-      })
+    test (type) {
+      if (type === 'sdk') {
+        const url = window.location.href
+        signature({ url }).then(response => {
+          if (response.data.success) {
+            const params = response.data.params
+            this.$wx.config({
+              debug: true,
+              appId: params.appId,
+              timestamp: params.timestamp,
+              nonceStr: params.noncestr,
+              signature: params.signature,
+              jsApiList: ['hideAllNonBaseMenuItem', 'previewImage', 'chooseImage']
+            })
+            this.$wx.ready(() => {
+              this.$wx.hideAllNonBaseMenuItem()
+              console.log('success')
+            })
+          }
+        })
+      } else if (type === 'oauth') {
+        console.log('oauth')
+      }
     }
   }
 }

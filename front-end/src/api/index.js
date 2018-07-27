@@ -11,6 +11,14 @@ export function signature (params) {
   })
 }
 
+export function oauth (params) {
+  return fetch({
+    url: '/oauth',
+    method: 'GET',
+    params: params
+  })
+}
+
 export function hear () {
   return fetch({
     url: '/hear',

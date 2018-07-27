@@ -2,6 +2,7 @@
 
 const Service = require('egg').Service;
 const WechatClient = require('../wechat-lib');
+const WechatOAuth = require('../wechat-lib/oauth');
 
 class WechatService extends Service {
   async getWechatClient() {
@@ -22,9 +23,26 @@ class WechatService extends Service {
       },
     };
 
+
     const wechat = new WechatClient(wechatConfig.wechat);
 
     return wechat;
+  }
+
+  async getOAuth() {
+    const { config } = this.app;
+    // eslint-disable-next-line
+    const wechatConfig = {
+
+      wechat: {
+        appID: config.authorization.appID,
+        appSecret: config.authorization.appSecret,
+        token: config.authorization.token,
+      },
+    };
+    const oauth = new WechatOAuth(wechatConfig.wechat);
+
+    return oauth;
   }
 
   async getSignatureAsync(url) {
@@ -40,6 +58,24 @@ class WechatService extends Service {
     params.appId = wechatClient.appID;
 
     return params;
+  }
+
+  async getAuthorizeURL(...args) {
+    const { ctx } = this;
+    const oauth = await ctx.service.wechat.getOAuth();
+
+    return oauth.getAuthorizeURL(...args);
+  }
+
+  async getUserByCode(code) {
+    const { ctx } = this;
+    const oauth = await ctx.service.wechat.getOAuth();
+
+    const data = await oauth.fetchAccessToken(code);
+    const openid = data.openid;
+    const user = await oauth.getUserInfo(data.access_token, openid);
+
+    return user;
   }
 }
 

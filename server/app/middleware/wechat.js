@@ -8,7 +8,6 @@ module.exports = () => {
   return async function signature(ctx, next) {
     const { app } = ctx;
     if (ctx.request.url.indexOf('/api') > -1) {
-      console.log('api');
       await next();
       return false;
     }
