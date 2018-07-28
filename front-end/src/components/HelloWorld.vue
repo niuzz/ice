@@ -4,15 +4,15 @@
       公众号授权测试
     </h1>
     <el-button type='primary' @click="test('sdk')">test sdk</el-button>
-    <el-button type='primary' @click="test('oauth')">test oauth</el-button>
+    <el-button type='primary' @click="test('redirect')">test oauth</el-button>
     <div style="margin-top: 20px;">
-      <el-button type='primary' @click="test('direct')">test 重定向</el-button>
+      <el-button type='primary' @click="test('userInfo')">get UserInfo</el-button>
     </div>
   </div>
 </template>
 
 <script>
-import { signature, oauth, test } from '@/api/'
+import { signature, redirect, oauth } from '@/api/'
 export default {
   name: 'HelloWorld',
   data () {
@@ -43,18 +43,19 @@ export default {
             })
           }
         })
-      } else if (type === 'oauth') {
+      } else if (type === 'redirect') {
         const url = encodeURIComponent('http://vue.chinabyte.com')
         const visit = 'a'
         const id = 'b'
-        oauth({url, visit, id}).then(response => {
-          // const url = decodeURIComponent(response.data)
-          console.log('redirect')
-          // window.location = url
+        redirect({url, visit, id}).then(response => {
+          window.location = response.data
         })
-      } else if (type === 'direct') {
-        test().then(response => {
-          console.log(response)
+      } else if (type === 'userInfo') {
+        let params = (new URL(document.location)).searchParams
+        let code = params.get('code')
+        console.log(code)
+        oauth({code}).then(response => {
+          console.log(response.data)
         })
       }
     }

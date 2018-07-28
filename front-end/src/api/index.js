@@ -11,9 +11,17 @@ export function signature (params) {
   })
 }
 
-export function oauth (params) {
+export function redirect (params) {
   return fetch({
     url: '/redirect',
+    method: 'GET',
+    params: params
+  })
+}
+
+export function oauth (params) {
+  return fetch({
+    url: '/oauth',
     method: 'GET',
     params: params
   })
