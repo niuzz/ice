@@ -72,6 +72,7 @@ class WechatService extends Service {
     const oauth = await ctx.service.wechat.getOAuth();
 
     const data = await oauth.fetchAccessToken(code);
+
     const openid = data.openid;
     const user = await oauth.getUserInfo(data.access_token, openid);
 

@@ -43,21 +43,22 @@ class Wechat extends Controller {
     const scope = 'snsapi_userinfo';
     const { visit, id } = ctx.query;
     const params = id ? `${visit}_${id}` : visit;
+    const url = await ctx.service.wechat.getAuthorizeURL(scope, redirect, params);
 
-    const url = ctx.service.wechat.getAuthorizeURL(scope, redirect, params);
-
-    ctx.redirect(url);
+    console.log(url);
+    ctx.unsafeRedirect(url);
+    // ctx.redirect(url);
+    // ctx.unsafeRedirect(url);
   }
 
   async oauth() {
     const { ctx } = this;
     const url = ctx.query.url;
-    const urlObj = urlParse(decodeURIComponent(url));
-    const params = queryParse(urlObj.query);
+    const urlObj = urlParse.parse(decodeURIComponent(url));
+    const params = queryParse.parse(urlObj.query);
     const code = params.code;
     const user = await ctx.service.wechat.getUserByCode(code);
 
-    console.log(user);
     ctx.session = {
       openid: user.openid,
     };

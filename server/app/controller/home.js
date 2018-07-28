@@ -7,7 +7,10 @@ class HomeController extends Controller {
     this.ctx.body = 'hi, egg';
   }
   async api() {
-    this.ctx.body = 'this is api test';
+
+    this.ctx.unsafeRedirect('http://www.baidu.com');
+    this.ctx.body = 'api';
+    // this.ctx.redirect('www.baidu.com');
   }
 }
 

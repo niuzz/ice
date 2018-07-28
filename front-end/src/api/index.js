@@ -13,15 +13,15 @@ export function signature (params) {
 
 export function oauth (params) {
   return fetch({
-    url: '/oauth',
+    url: '/redirect',
     method: 'GET',
     params: params
   })
 }
 
-export function hear () {
+export function test () {
   return fetch({
-    url: '/hear',
+    url: '/test',
     method: 'GET'
   })
 }

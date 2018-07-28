@@ -1,15 +1,18 @@
 <template>
   <div class="hello">
     <h1>
-      test-page
+      公众号授权测试
     </h1>
     <el-button type='primary' @click="test('sdk')">test sdk</el-button>
     <el-button type='primary' @click="test('oauth')">test oauth</el-button>
+    <div style="margin-top: 20px;">
+      <el-button type='primary' @click="test('direct')">test 重定向</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-import { signature } from '@/api/'
+import { signature, oauth, test } from '@/api/'
 export default {
   name: 'HelloWorld',
   data () {
@@ -18,7 +21,6 @@ export default {
     }
   },
   created () {
-    console.log(this.$wx)
   },
   methods: {
     test (type) {
@@ -42,7 +44,18 @@ export default {
           }
         })
       } else if (type === 'oauth') {
-        console.log('oauth')
+        const url = encodeURIComponent('http://vue.chinabyte.com')
+        const visit = 'a'
+        const id = 'b'
+        oauth({url, visit, id}).then(response => {
+          // const url = decodeURIComponent(response.data)
+          console.log('redirect')
+          // window.location = url
+        })
+      } else if (type === 'direct') {
+        test().then(response => {
+          console.log(response)
+        })
       }
     }
   }
