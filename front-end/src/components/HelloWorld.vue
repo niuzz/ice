@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <h1>
+    <img src="../assets/logo.png">
+    <h1 @click="$router.push({path: '/order'})" style="cursor: pointer">
       公众号授权测试
     </h1>
     <el-button type='primary' @click="test('sdk')">test sdk</el-button>
@@ -21,6 +22,8 @@ export default {
     }
   },
   created () {
+  },
+  components: {
   },
   methods: {
     test (type) {

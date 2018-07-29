@@ -1,8 +1,8 @@
 'use strict';
 
 const Controller = require('egg').Controller;
-const urlParse = require('url');
-const queryParse = require('querystring');
+// const urlParse = require('url');
+// const queryParse = require('querystring');
 // const sha1 = require('sha1');
 
 class Wechat extends Controller {
@@ -58,10 +58,6 @@ class Wechat extends Controller {
     // const params = queryParse.parse(urlObj.query);
     // const code = params.code;
     const code = ctx.query.code;
-
-    console.log('-----------------------');
-    console.log(ctx.query);
-    console.log('-----------------------');
 
     const user = await ctx.service.wechat.getUserByCode(code);
 
