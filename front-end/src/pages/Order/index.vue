@@ -2,7 +2,7 @@
 <template>
   <div class='wrap'>
     <div class='date-wrap'>
-      <div class='date-item' v-for="item in list" :key="item.key">
+      <div class='date-item' v-for="item in list" :key="item.key" @click="chooseOrder(item)">
         <div class='up'>
           <p class='month'> {{ item.tMonth }} 月</p>
           <p class='day'> {{ item.tDate }}</p>
@@ -79,6 +79,9 @@ export default {
         default:
           break
       }
+    },
+    chooseOrder (item) {
+      this.$router.push({ path: '/detail?id=' + item.key })
     }
   }
 }
