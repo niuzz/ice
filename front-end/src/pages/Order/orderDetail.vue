@@ -1,6 +1,8 @@
 <!-- detail -->
 <template>
-  <div class='wrap'></div>
+  <div class='wrap'>
+    detail
+  </div>
 </template>
 
 <script>
