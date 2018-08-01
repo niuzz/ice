@@ -5,7 +5,7 @@ module.exports = app => {
   mongoose.connect('mongodb://127.0.0.1:27017/sandra');
   const Schema = mongoose.Schema;
 
-  const TokenSchema = new Schema({
+  const OrderSchema = new Schema({
     date: { type: String },
     username: { type: String },
     openid: { type: String },
@@ -24,7 +24,7 @@ module.exports = app => {
     },
   });
 
-  TokenSchema.pre('save', function(next) {
+  OrderSchema.pre('save', function(next) {
     if (this.isNew) {
       this.meta.createdAt = this.meta.updatedAt = Date.now();
     } else {
@@ -33,11 +33,29 @@ module.exports = app => {
     next();
   });
 
-  TokenSchema.statics = {
+  OrderSchema.statics = {
     async getOrder(date) {
       const order = await this.findOne({ date }).exec();
       return order;
     },
-    async saveOrder() {},
+    async saveOrder(data) {
+      let order = await this.findOne({ date: data.date }).exec();
+      if (order) {
+        order = { };
+      } else {
+        // eslint-disable-next-line
+        order = new Order({});
+        console.log(order);
+      }
+      try {
+        await order.save();
+        console.log('存储成功，order.id' + order._id);
+      } catch (e) {
+        console.log('存储失败');
+        console.log(e);
+      }
+    },
   };
+
+  const Order = mongoose.model('Order', OrderSchema);
 };
