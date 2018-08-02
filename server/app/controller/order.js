@@ -12,7 +12,8 @@ class OrderController extends Controller {
   async createOrder() {
     const { ctx } = this;
     const order = ctx.request.body;
-    ctx.body = JSON.stringify(order);
+    await ctx.service.order.createOrder(order);
+    ctx.helper.success({ ctx, res: 1, msg: 'hello' });
   }
 }
 
