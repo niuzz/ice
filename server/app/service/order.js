@@ -3,8 +3,9 @@
 const Service = require('egg').Service;
 
 class OrderServer extends Service {
-  async createOrder(order) {
-    console.log(order);
+  async createOrder(payload) {
+    const { ctx } = this;
+    return ctx.model.User.create(payload);
   }
 }
 

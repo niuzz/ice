@@ -22,6 +22,12 @@ class HomeController extends Controller {
 
     this.ctx.body = url;
   }
+
+  async serviceRedirect() {
+    const { ctx } = this;
+    ctx.redirect('http://www.baidu.com');
+    // ctx.response.redirect('page');
+  }
 }
 
 module.exports = HomeController;

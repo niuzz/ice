@@ -9,11 +9,14 @@
     <div style="margin-top: 20px;">
       <el-button type='primary' @click="test('userInfo')">get UserInfo</el-button>
     </div>
+    <div>
+      <el-button type='primary' @click="test('serviceRedirect')">跳转</el-button>
+    </div>
   </div>
 </template>
 
 <script>
-import { signature, redirect, oauth } from '@/api/'
+import { signature, redirect, oauth, serviceRedirect } from '@/api/'
 export default {
   name: 'HelloWorld',
   data () {
@@ -59,6 +62,10 @@ export default {
         console.log(code)
         oauth({code}).then(response => {
           console.log(response.data)
+        })
+      } else if (type === 'serviceRedirect') {
+        serviceRedirect().then(response => {
+          console.log(111)
         })
       }
     }

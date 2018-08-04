@@ -12,8 +12,8 @@ class OrderController extends Controller {
   async createOrder() {
     const { ctx } = this;
     const order = ctx.request.body;
-    await ctx.service.order.createOrder(order);
-    ctx.helper.success({ ctx, res: 1, msg: 'hello' });
+    const result = await ctx.service.order.createOrder(order);
+    ctx.helper.success({ ctx, res: result, msg: '创建成功' });
   }
 }
 

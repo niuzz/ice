@@ -33,3 +33,10 @@ export function test () {
     method: 'GET'
   })
 }
+
+export function serviceRedirect () {
+  return fetch({
+    url: '/serviceRedirect',
+    method: 'GET'
+  })
+}
