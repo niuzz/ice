@@ -38,6 +38,9 @@ module.exports = app => {
       const order = await this.findOne({ date }).exec();
       return order;
     },
+    async getAll() {
+      return this.find().exec();
+    },
     async saveOrder(data) {
       let order = await this.findOne({ date: data.date }).exec();
       if (order) {

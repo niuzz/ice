@@ -6,7 +6,15 @@ const Controller = require('egg').Controller;
 class OrderController extends Controller {
   async getOrder() {
     const { ctx } = this;
-    ctx.body = 'get order';
+
+    const orderList = await ctx.service.order.getOrder();
+
+    if (orderList) {
+      ctx.helper.success({ ctx, res: orderList, msg: '获取成功' });
+    } else {
+      ctx.throw({ message: '没有信息', code: 501 });
+    }
+
   }
 
   async createOrder() {
@@ -26,7 +34,6 @@ class OrderController extends Controller {
 
     const result = await ctx.service.order.createOrder(order);
     ctx.helper.success({ ctx, res: result, msg: '创建成功' });
-
 
   }
 }

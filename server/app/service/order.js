@@ -8,6 +8,11 @@ class OrderServer extends Service {
 
     return ctx.model.Order.saveOrder(payload);
   }
+
+  async getOrder() {
+    const { ctx } = this;
+    return ctx.model.Order.getAll();
+  }
 }
 
 module.exports = OrderServer;
