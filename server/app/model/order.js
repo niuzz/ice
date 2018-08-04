@@ -41,10 +41,10 @@ module.exports = app => {
     async saveOrder(data) {
       let order = await this.findOne({ date: data.date }).exec();
       if (order) {
-        order = { };
+        order = data;
       } else {
         // eslint-disable-next-line
-        order = new Order({});
+        order = new Order(data);
         console.log(order);
       }
       try {
@@ -58,4 +58,6 @@ module.exports = app => {
   };
 
   const Order = mongoose.model('Order', OrderSchema);
+
+  return Order;
 };
