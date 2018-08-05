@@ -3,15 +3,25 @@
 const Service = require('egg').Service;
 
 class OrderServer extends Service {
-  async createOrder(payload) {
+
+  // ======================== create ============================ //
+  async create(payload) {
     const { ctx } = this;
 
-    return ctx.model.Order.saveOrder(payload);
+    const order = new ctx.model.Order(payload);
+    try {
+      const o = await order.save();
+      return o;
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   }
 
-  async getOrder() {
+  async show(payload) {
     const { ctx } = this;
-    return ctx.model.Order.getAll();
+
+    return ctx.model.Order.find(payload).exec();
   }
 }
 

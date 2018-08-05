@@ -6,20 +6,11 @@ const moment = require('moment');
 exports.formatTime = time => moment(time).format('YYYY-MM-DD hh:mm:ss');
 
 // 处理成功响应
-exports.success = ({ ctx, res = null, msg = '请求成功' }) => {
-  ctx.body = {
-    code: 0,
-    data: res,
-    msg,
-  };
-  ctx.status = 200;
-};
-// 处理错误响应
-exports.error = ({ ctx, res = null, msg = '请求失败', code }) => {
+exports.success = ({ ctx, res = null, msg = '请求成功', code = 200 }) => {
   ctx.body = {
     code,
     data: res,
     msg,
   };
-  ctx.status = code;
+  ctx.status = 200;
 };

@@ -33,33 +33,6 @@ module.exports = app => {
     next();
   });
 
-  OrderSchema.statics = {
-    async getOrder(date) {
-      const order = await this.findOne({ date }).exec();
-      return order;
-    },
-    async getAll() {
-      return this.find().exec();
-    },
-    async saveOrder(data) {
-      let order = await this.findOne({ date: data.date }).exec();
-      if (order) {
-        order = data;
-      } else {
-        // eslint-disable-next-line
-        order = new Order(data);
-        console.log(order);
-      }
-      try {
-        await order.save();
-        console.log('存储成功，order.id' + order._id);
-      } catch (e) {
-        console.log('存储失败');
-        console.log(e);
-      }
-    },
-  };
-
   const Order = mongoose.model('Order', OrderSchema);
 
   return Order;
