@@ -9,7 +9,16 @@ module.exports = app => {
     name: { type: String, unique: true, required: true },
     access: { type: String, required: true, default: 'user' },
     extra: { type: mongoose.Schema.Types.Mixed },
-    createdAt: { type: Date, default: Date.now },
+    meta: {
+      createdAt: {
+        type: Date,
+        default: Date.now(),
+      },
+      updatedAt: {
+        type: Date,
+        default: Date.now(),
+      },
+    },
   });
 
   RoleSchema.pre('save', function(next) {
