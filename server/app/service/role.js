@@ -63,7 +63,7 @@ class RoleService extends Service {
     const data = res.map((e, i) => {
       const jsonObject = Object.assign({}, e._doc);
       jsonObject.key = i;
-      jsonObject.createdAt = this.ctx.helper.formatTime(e.mate.createdAt);
+      jsonObject.createdAt = this.ctx.helper.formatTime(e.meta.createdAt);
       return jsonObject;
     });
 

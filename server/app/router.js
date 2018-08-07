@@ -15,4 +15,8 @@ module.exports = app => {
 
   router.get('/api/order', controller.order.getOrder);
   router.post('/api/order', controller.order.createOrder);
+
+  router.post('/api/role', controller.role.create);
+  router.get('/api/role/:id', controller.role.show);
+  router.get('/api/role', controller.role.index);
 };
