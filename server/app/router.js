@@ -19,4 +19,6 @@ module.exports = app => {
   router.post('/api/role', controller.role.create);
   router.get('/api/role/:id', controller.role.show);
   router.get('/api/role', controller.role.index);
+  router.put('/api/role/:id', controller.role.update);
+  router.delete('/api/role/:id', controller.role.destroy);
 };
