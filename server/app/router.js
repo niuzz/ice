@@ -13,6 +13,9 @@ module.exports = app => {
   router.get('/api/oauth/', controller.wechat.oauth);
   router.get('/api/redirect/', controller.wechat.redirect);
 
+  router.post('/api/user/login', controller.user.login);
+  router.post('/api/user', controller.user.create);
+
   router.get('/api/order', controller.order.getOrder);
   router.post('/api/order', controller.order.createOrder);
 
@@ -21,4 +24,5 @@ module.exports = app => {
   router.get('/api/role', controller.role.index);
   router.put('/api/role/:id', controller.role.update);
   router.delete('/api/role/:id', controller.role.destroy);
+
 };

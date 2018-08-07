@@ -15,6 +15,10 @@ exports.validate = {
   package: 'egg-validate',
 };
 
+exports.bcrypt = {
+  enable: true,
+  package: 'egg-bcrypt',
+};
 
 exports.jwt = {
   enable: true,
