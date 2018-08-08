@@ -31,7 +31,12 @@ class User extends Service {
     }
     // 生成Token令牌
 
-    return { token: await service.actionToken.apply(user._id) };
+    return {
+      token: await service.actionToken.createToken(user._id),
+      id: user._id,
+      mobile: user.mobile,
+      realName: user.realName,
+    };
   }
 
   async logout() {
