@@ -14,7 +14,7 @@ module.exports = app => {
   router.get('/api/redirect/', controller.wechat.redirect);
 
   router.post('/api/user/login', controller.user.login);
-  router.post('/api/user', app.jwt, controller.user.create);
+  router.post('/api/user', controller.user.create);
 
   router.get('/api/order', controller.order.getOrder);
   router.post('/api/order', controller.order.createOrder);
