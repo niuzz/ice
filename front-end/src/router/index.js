@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Order from '@/pages/Order'
 import Detail from '@/pages/Order/orderDetail'
+import Register from '@/pages/Order/register'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/detail',
       name: '预订详情',
       component: Detail
+    },
+    {
+      path: '/register',
+      name: '注册',
+      component: Register
     }
   ]
 })

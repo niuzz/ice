@@ -12,7 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://natapp.niuzhuangzhi.com',
+        // target: 'http://natapp.niuzhuangzhi.com', // 内网穿透挂了用本地
+        target: 'http://localhost:7001',
         changeOrigin: true,
         pathRewrite: {
           // '^/api': '/api'
