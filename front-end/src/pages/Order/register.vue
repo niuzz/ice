@@ -2,7 +2,9 @@
 <template>
   <div class='wrap'>
     <group>
-      <x-input v-model="mobile" placeholder="请输入手机" title="手机" is-type="china-mobile" required ref="mobile"></x-input>
+      <x-input v-model="mobile" placeholder="请输入手机" title="手机" is-type="china-mobile" required ref="mobile">
+        <i class='common nj-user' slot="label" style="padding-right:10px;display:inline-block; "></i>
+      </x-input>
       <x-input v-model="password" placeholder="请输入密码" title="密码" ref="password"></x-input>
       <x-input v-model="realName" placeholder="请输入姓名" title="姓名" ref="realName"></x-input>
       <toast v-model="show" type="cancel" :time="800" is-show-mask :text="toastContent" position="default">{{ toastContent }}</toast>

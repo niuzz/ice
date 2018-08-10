@@ -43,13 +43,12 @@ class UserController extends Controller {
 
     const user = await service.user.findByMobile(payload.mobile);
     if (user) {
-      ctx.status = 422;
-      throw (422, '手机已注册');
+      ctx.throw(422, '手机已注册');
     }
     // 调用 Service 进行业务处理
-    //  const res = await service.user.create(payload);
+    const res = await service.user.create(payload);
     // 设置响应内容和响应状态码
-    // ctx.helper.success({ ctx, res });
+    ctx.helper.success({ ctx, res });
   }
 
   // 修改用户
