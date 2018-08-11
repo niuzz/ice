@@ -4,19 +4,16 @@
     <h1 @click="$router.push({path: '/order'})" style="cursor: pointer">
       公众号授权测试
     </h1>
-    <el-button type='primary' @click="test('sdk')">test sdk</el-button>
-    <el-button type='primary' @click="test('redirect')">test oauth</el-button>
-    <div style="margin-top: 20px;">
-      <el-button type='primary' @click="test('userInfo')">get UserInfo</el-button>
-    </div>
-    <div>
-      <el-button type='primary' @click="test('serviceRedirect')">跳转</el-button>
-    </div>
+    <x-button type='primary' @click.native="test('sdk')">test sdk</x-button>
+    <x-button type='primary' @click.native="test('redirect')">test oauth</x-button>
+    <x-button type='primary' @click.native="test('userInfo')">get UserInfo</x-button>
+    <x-button type='primary' @click.native="test('serviceRedirect')">跳转</x-button>
   </div>
 </template>
 
 <script>
-import { signature, redirect, oauth, serviceRedirect } from '@/api/'
+import { signature, redirect, oauth } from '@/api/'
+import { XButton } from 'vux'
 export default {
   name: 'HelloWorld',
   data () {
@@ -27,6 +24,7 @@ export default {
   created () {
   },
   components: {
+    XButton
   },
   methods: {
     test (type) {
@@ -64,9 +62,7 @@ export default {
           console.log(response.data)
         })
       } else if (type === 'serviceRedirect') {
-        serviceRedirect().then(response => {
-          console.log(111)
-        })
+        this.$router.push('/order')
       }
     }
   }
@@ -74,6 +70,12 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="less">
+.hello {
+  text-align: center;
+  h1 {
+    margin-bottom: 1em;
+  }
+}
 
 </style>
