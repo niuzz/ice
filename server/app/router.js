@@ -25,4 +25,5 @@ module.exports = app => {
   router.put('/api/role/:id', controller.role.update);
   router.delete('/api/role/:id', controller.role.destroy);
 
+  router.post('/api/mina', controller.mina.login);
 };

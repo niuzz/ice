@@ -1,6 +1,7 @@
 'use strict';
 
 const moment = require('moment');
+const crypto = require('crypto');
 
 // 格式化时间
 exports.formatTime = time => moment(time).format('YYYY-MM-DD hh:mm:ss');
@@ -35,4 +36,18 @@ exports.success = ({ ctx, res = null, msg = '请求成功', code = 200 }) => {
     msg,
   };
   ctx.status = 200;
+};
+
+exports.decryptByAES = (encrypted, key, iv) => {
+  encrypted = new Buffer(encrypted, 'base64');
+  key = new Buffer(key, 'base64');
+  iv = new Buffer(iv, 'base64');
+  const decipher = crypto.createDecipheriv('aes-128-cbc', key, iv);
+  let decrypted = decipher.update(encrypted, 'base64', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+};
+
+exports.encryptBySha1 = data => {
+  return crypto.createHash('sha1').update(data, 'utf8').digest('hex');
 };

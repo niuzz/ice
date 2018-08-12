@@ -3,4 +3,5 @@
   <text>
     list
   </text>
+  <button bindtap="onLogin">授权</button>
 </view>

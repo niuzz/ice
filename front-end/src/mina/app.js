@@ -1,6 +1,7 @@
 App({
-  onLaunch: function() {},
+  onLaunch: function() {
+  },
   globalData: {
-    user: null
+    userInfo: null
   }
 })

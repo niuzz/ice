@@ -62,5 +62,25 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  onLogin: function () {
+    console.log(111);
+    wx.login({
+      success: function(res) {
+        wx.request({
+          url: 'http://natapp.niuzhuangzhi.com/api/mina',
+          method: 'post',
+          data: {code: res.code}
+        })
+        console.log(res.code);
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  },
+
+  getPhoneNumber: function (data) {
+    console.log(data)
   }
 })
