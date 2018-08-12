@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/list/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F4A0A5",
+    "navigationBarTitleText": "山楂小小屋",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default"
+  }
+}

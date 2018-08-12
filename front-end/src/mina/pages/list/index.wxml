@@ -1,0 +1,6 @@
+<!--pages/list/index.wxml-->
+<view>
+  <text>
+    list
+  </text>
+</view>

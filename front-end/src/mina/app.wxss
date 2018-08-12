@@ -1,0 +1,4 @@
+page{
+   font-family: PingFangSC-Thin, source-han-sans-simplified-c,sans-serif; 
+   font-size:16px;
+}
