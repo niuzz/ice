@@ -2,6 +2,7 @@
 
 const moment = require('moment');
 const crypto = require('crypto');
+const rp = require('request-promise');
 
 // 格式化时间
 exports.formatTime = time => moment(time).format('YYYY-MM-DD hh:mm:ss');
@@ -24,7 +25,7 @@ exports.verifyToken = async (ctx, userId) => {
     ctx.helper.error(ctx, 401, '用户 ID 与 Token 不一致');
     return false;
   }
-  ctx.helper.success(ctx, verifyResult);
+  ctx.helper.success({ ctx, res: verifyResult });
   return true;
 };
 
@@ -36,6 +37,19 @@ exports.success = ({ ctx, res = null, msg = '请求成功', code = 200 }) => {
     msg,
   };
   ctx.status = 200;
+};
+
+exports.getSession = options => {
+
+  return new Promise(function(resolve, reject) {
+    rp(options).then(res => {
+      if (res.session_key && res.openid) {
+        resolve(res.openid);
+      } else {
+        reject(res);
+      }
+    });
+  });
 };
 
 exports.decryptByAES = (encrypted, key, iv) => {

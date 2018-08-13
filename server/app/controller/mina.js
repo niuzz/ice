@@ -1,5 +1,5 @@
 'use strict';
-const send = require('request-promise');
+
 const Controller = require('egg').Controller;
 
 class MinaController extends Controller {
@@ -13,10 +13,14 @@ class MinaController extends Controller {
     const appSecret = app.config.authorization.minaSecret;
     const params = `?appid=${appId}&secret=${appSecret}&js_code=${code}&grant_type=authorization_code`;
     const URI = `${apiUrl}${params}`;
-    send(URI).then(res => {
-      console.log(res);
+    const options = {
+      uri: URI,
+      json: true,
+    };
+    ctx.helper.getSession(options).then(res => {
+      ctx.body = 'kk';
+      ctx.helper.success({ ctx, res });
     });
-
   }
 }
 

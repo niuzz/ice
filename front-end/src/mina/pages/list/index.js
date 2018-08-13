@@ -69,7 +69,7 @@ Page({
     wx.login({
       success: function(res) {
         wx.request({
-          url: 'http://natapp.niuzhuangzhi.com/api/mina',
+          url: 'http://127.0.0.1:7001/api/mina',
           method: 'post',
           data: {code: res.code}
         })
