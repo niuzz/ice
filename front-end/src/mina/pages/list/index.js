@@ -121,6 +121,7 @@ Page({
             success: function(response) {
               const openid = response.data.data.openid;
               const skey = response.data.data.skey;
+              const id = response.data.data.id
               wx.setStorage({
                 key: 'openid',
                 data: openid,
@@ -129,6 +130,10 @@ Page({
                 key: 'skey',
                 data: skey,
               });
+              wx.setStorage({
+                key: 'id',
+                data: id,
+              })
             }
           })
         },
