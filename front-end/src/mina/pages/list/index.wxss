@@ -1,1 +1,8 @@
 /* pages/list/index.wxss */
+.photo-type-list {
+  display: flex;
+  flex-direction: row;
+}
+.photo-type-list li {
+  width: 30%;
+}

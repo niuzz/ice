@@ -1,7 +1,20 @@
 <!--pages/list/index.wxml-->
 <view>
   <text>
-    list
+    sandra摄影工作室简介
   </text>
-  <button bindtap="onLogin">授权</button>
+  <ul class="photo-type-list">
+    <li>
+      测试
+    </li>
+    <li>
+      测试
+    </li>
+    <li>
+      测试
+    </li>
+    <li>
+      测试
+    </li>
+  </ul>
 </view>
