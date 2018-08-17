@@ -1,8 +1,21 @@
 /* pages/list/index.wxss */
+.title {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
 .photo-type-list {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .photo-type-list li {
-  width: 30%;
+  width: 32%;
+  height: 10em;
+  text-align: center;
+  background: #eee;
+  margin-bottom: 1em;
 }

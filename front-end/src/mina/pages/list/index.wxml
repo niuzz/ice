@@ -1,6 +1,6 @@
 <!--pages/list/index.wxml-->
 <view>
-  <text>
+  <text class='title'>
     sandra摄影工作室简介
   </text>
   <ul class="photo-type-list">
