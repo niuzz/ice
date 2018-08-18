@@ -5,16 +5,8 @@
   </text>
   <ul class="photo-type-list">
     <li>
-      测试
-    </li>
-    <li>
-      测试
-    </li>
-    <li>
-      测试
-    </li>
-    <li>
-      测试
+      <list-item-cmp bind:tap="toDetail" color="{{itemColor}}" >
+      </list-item-cmp>
     </li>
   </ul>
 </view>

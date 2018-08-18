@@ -1,0 +1,6 @@
+<!--components/listItem/index.wxml-->
+<view bindtap='toDetail' class='container' style="background-color: {{color}}">
+  <div>
+    item
+  </div>
+</view>

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    itemColor: "red"
   },
 
   /**
@@ -145,7 +145,7 @@ Page({
     
   },
 
-  getPhoneNumber: function(data) {
-    console.log(data)
+  toDetail: function() {
+    // console.log(111)
   }
 })
