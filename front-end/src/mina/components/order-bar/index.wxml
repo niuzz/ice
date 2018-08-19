@@ -1,0 +1,6 @@
+<!--components/order-bar/index.wxml-->
+<view class='container'>
+  <text>
+    立即预约
+  </text>
+</view>

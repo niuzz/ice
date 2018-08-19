@@ -4,7 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    color: String
+    color: String,
+    path: String,
+    imgUrl: String,
+    title: String
   },
 
   /**
@@ -19,7 +22,9 @@ Component({
    */
   methods: {
     toDetail: function(event) {
-      console.log(event)
+      wx.navigateTo({
+        url: this.properties.path,
+      })
     }
   }
 })

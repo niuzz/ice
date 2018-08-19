@@ -1,0 +1,7 @@
+<!--pages/detail/detail.wxml-->
+<view>
+<text>
+detail
+</text>
+<order-bar-cmp></order-bar-cmp>
+</view>

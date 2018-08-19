@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/list/index"
+    "pages/list/index",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -8,5 +9,37 @@
     "navigationBarTitleText": "山楂小小屋",
     "navigationBarTextStyle": "white",
     "navigationStyle": "default"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#000000",
+    "backgroundColor": "#F4A0A5",
+    "color": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/list/index",
+        "selectedIconPath": "/images/tab/classic@highlight.png",
+        "iconPath": "/images/tab/classic.png",
+        "text": "产品介绍"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "selectedIconPath": "/images/tab/book@highlight.png",
+        "iconPath": "/images/tab/book.png",
+        "text": "立即预约"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "selectedIconPath": "/images/tab/classic@highlight.png",
+        "iconPath": "/images/tab/classic.png",
+        "text": "商业合作"
+      },
+      {
+        "pagePath": "pages/list/index",
+        "selectedIconPath": "/images/tab/classic@highlight.png",
+        "iconPath": "/images/tab/classic.png",
+        "text": "我的订单"
+      }
+    ]
   }
 }

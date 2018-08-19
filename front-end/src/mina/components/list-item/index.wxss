@@ -1,9 +1,15 @@
 /* components/listItem/index.wxss */
 .container {
   width: 100%;
-  height: 100%;
   display: flex;
+  box-sizing: border-box;
+  padding: 1em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.item-imgae {
+  width: 100%;
+  height: 5rem;
 }

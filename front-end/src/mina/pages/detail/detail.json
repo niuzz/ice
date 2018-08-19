@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "order-bar-cmp": "/components/order-bar/index"
+  }
+}

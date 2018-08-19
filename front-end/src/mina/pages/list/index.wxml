@@ -5,7 +5,23 @@
   </text>
   <ul class="photo-type-list">
     <li>
-      <list-item-cmp bind:tap="toDetail" color="{{itemColor}}" >
+      <list-item-cmp 
+      bind:tap="toDetail" 
+      color="{{itemColor}}" 
+      path="/pages/detail/detail"
+      imgUrl="{{itemUrl1}}"
+      title="宠物摄影"
+      >
+      </list-item-cmp>
+    </li>
+    <li>
+      <list-item-cmp 
+      bind:tap="toDetail" 
+      color="{{itemColor}}" 
+      path="/pages/detail/detail"
+      imgUrl="{{itemUrl2}}"
+      title="个人写真"
+      >
       </list-item-cmp>
     </li>
   </ul>

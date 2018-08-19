@@ -1,6 +1,13 @@
-<!--components/listItem/index.wxml-->
-<view bindtap='toDetail' class='container' style="background-color: {{color}}">
-  <div>
-    item
-  </div>
+<!--components/list-item/index.wxml-->
+<view 
+bindtap='toDetail' 
+class='container' 
+style="background-color: {{color}}">
+      <image 
+      src="{{imgUrl}}"
+      class="item-imgae"
+      />
+      <text class='title'>
+        {{title}}
+      </text> 
 </view>
