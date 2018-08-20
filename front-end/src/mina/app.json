@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/list/index",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/order/index",
+    "pages/date-list/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

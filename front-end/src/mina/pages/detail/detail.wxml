@@ -3,5 +3,6 @@
 <text>
 detail
 </text>
-<order-bar-cmp></order-bar-cmp>
+<order-bar-cmp triggerName="certain" bindcertain="certain"></order-bar-cmp>
+<modal-cmp show="{{modalShow}}"></modal-cmp>
 </view>

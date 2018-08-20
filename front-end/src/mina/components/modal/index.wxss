@@ -1,0 +1,15 @@
+/* components/modal/index.wxss */
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+.show {
+  display: block;
+}
+.hidden {
+  display: none;
+}

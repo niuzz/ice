@@ -1,6 +1,7 @@
 /* components/order-bar/index.wxss */
 .container {
-  height:80rpx;
+  width: 100%;
+  height:100rpx;
   background-color: #f7f7f7;
   border-radius:2px;
   display:flex;
@@ -12,4 +13,13 @@
 }
 .text {
   font-size:28rpx;
+  padding: 0 20rpx;
+}
+.order{
+  width: 30vw;
+  height: 100rpx;
+  background: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
