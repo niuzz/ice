@@ -65,6 +65,13 @@ Page({
   },
 
   certain: function() {
-    this.modalShow = true;
+    this.setData({
+      modalShow : true
+    })
+  },
+  hiddenModal: function() {
+    this.setData({
+      modalShow: false
+    })
   }
 })

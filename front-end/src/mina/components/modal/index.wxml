@@ -1,3 +1,4 @@
 <!--components/modal/index.wxml-->
-<view class='container {{ show? "show": "hidden" }}' >
+<view class='container {{ show? "show": "hidden" }}' bindtap='backClick'>
+  <button catchtap='btnClick'>点击测试</button>
 </view>

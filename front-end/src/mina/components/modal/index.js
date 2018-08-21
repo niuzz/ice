@@ -19,5 +19,12 @@ Component({
    */
   methods: {
 
+    backClick() {
+      this.triggerEvent('hiddenModal')
+    },
+
+    btnClick() {
+      console.log(222)
+    }
   }
 })
