@@ -2,7 +2,7 @@
 
 <view class='container'>
   <view class='text' bindtap='showdesc'>
-    <text >说明</text>
+    <slot></slot>
   </view>
   <view class='order'>
     <text class='text' bindtap='order'>立即预约 ></text>

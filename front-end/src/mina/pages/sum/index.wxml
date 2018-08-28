@@ -1,0 +1,10 @@
+<!--pages/sum/index.wxml-->
+<view class='wrap'>
+  <text>
+    合计
+  </text>
+  <order-bar-cmp>
+    <text>合计 xxx 元</text>
+  </order-bar-cmp>
+</view>
+

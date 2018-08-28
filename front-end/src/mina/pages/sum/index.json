@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "order-bar-cmp": "/components/order-bar/index",
+    "modal-cmp": "/components/modal/index"
+  }
+}

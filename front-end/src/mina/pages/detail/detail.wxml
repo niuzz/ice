@@ -3,6 +3,8 @@
 <text>
 detail
 </text>
-<order-bar-cmp triggerName="certain" bindcertain="certain"></order-bar-cmp>
+<order-bar-cmp triggerName="certain" bindcertain="certain">
+  <text>说明</text>
+</order-bar-cmp>
 <modal-cmp show="{{modalShow}}" bindhiddenModal="hiddenModal"></modal-cmp>
 </view>

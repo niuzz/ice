@@ -3,7 +3,8 @@
     "pages/list/index",
     "pages/detail/detail",
     "pages/order/index",
-    "pages/date-list/index"
+    "pages/date-list/index",
+    "pages/sum/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

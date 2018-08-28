@@ -19,10 +19,12 @@ Component({
    */
   methods: {
     order() {
-      this.triggerEvent(this.properties.triggerName, {})
+      // this.triggerEvent(this.properties.triggerName, {})
+      wx.navigateTo({
+        url: '/pages/sum/index',
+      })
     },
     showdesc() {
-      console.log(222)
       this.setData({
         show: true
       })
