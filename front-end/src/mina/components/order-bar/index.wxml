@@ -1,10 +1,23 @@
 <!--components/order-bar/index.wxml-->
 
 <view class='container'>
-  <text class='text'>说明</text>
+  <view class='text' bindtap='showdesc'>
+    <text >说明</text>
+  </view>
   <view class='order'>
     <text class='text' bindtap='order'>立即预约 ></text>
   </view>
+</view>
+<view class='desc {{ show? "show": "hidden" }}'>
+
+  <text>
+      加印说明
+    </text>
+
+
+    <text>
+    另一条说明
+  </text>  
   
 </view>
 

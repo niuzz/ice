@@ -4,15 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    triggerName: String
-
+    triggerName: String,
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    show: false
   },
 
   /**
@@ -21,6 +20,12 @@ Component({
   methods: {
     order() {
       this.triggerEvent(this.properties.triggerName, {})
+    },
+    showdesc() {
+      console.log(222)
+      this.setData({
+        show: true
+      })
     }
   }
 })

@@ -12,8 +12,8 @@
   bottom: 0;
 }
 .text {
-  font-size:28rpx;
   padding: 0 20rpx;
+  width: 70vw;
 }
 .order{
   width: 30vw;
@@ -22,4 +22,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.desc {
+  display: flex;
+  width: 100vw;
+  padding: 20rpx;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  bottom: 0;
+  z-index: 99;
+  background: #fff;
+}
+.show {
+  display: flex;
+}
+.hidden {
+  display: none;
 }
