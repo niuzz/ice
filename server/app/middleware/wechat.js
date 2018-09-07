@@ -30,7 +30,6 @@ module.exports = () => {
     } else if (ctx.method === 'POST') {
       if (sha !== signature) { // 校验是否来自微信服务器
         ctx.body = 'Failed';
-
         return false;
       }
       const data = await getRawBody(ctx.req, { // 解析二进制流
@@ -53,7 +52,6 @@ module.exports = () => {
       ctx.type = 'application/xml';
       ctx.body = xml;
     }
-
   };
 };
 

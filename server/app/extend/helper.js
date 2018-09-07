@@ -40,7 +40,6 @@ exports.success = ({ ctx, res = null, msg = '请求成功', code = 200 }) => {
 };
 
 exports.getSession = async options => {
-
   return new Promise(function(resolve, reject) {
     rp(options).then(res => {
       if (res.session_key && res.openid) {
