@@ -33,9 +33,6 @@ class Wechat extends Controller {
     };
   }
 
-  // 网页上点某按钮，直接跳转到 http://x.o/wechat-redirect?visit=a&id=b
-  // 用户被重定向到 Wechat Redirect URL 授权验证
-  // 验证后，自动二跳进入 http://x.o/oauth?code=xxxxxx&state=a_b
   async redirect() {
     const { ctx } = this;
     const { config } = this.app;

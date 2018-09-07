@@ -4,7 +4,10 @@
     "pages/detail/detail",
     "pages/order/index",
     "pages/date-list/index",
-    "pages/sum/index"
+    "pages/sum/index",
+    "pages/outlet/index",
+    "pages/collaboration/index",
+    "pages/my/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,19 +29,19 @@
         "text": "产品介绍"
       },
       {
-        "pagePath": "pages/list/index",
+        "pagePath": "pages/outlet/index",
         "selectedIconPath": "/images/tab/book@highlight.png",
         "iconPath": "/images/tab/book.png",
         "text": "立即预约"
       },
       {
-        "pagePath": "pages/list/index",
+        "pagePath": "pages/collaboration/index",
         "selectedIconPath": "/images/tab/classic@highlight.png",
         "iconPath": "/images/tab/classic.png",
         "text": "商业合作"
       },
       {
-        "pagePath": "pages/list/index",
+        "pagePath": "pages/my/index",
         "selectedIconPath": "/images/tab/classic@highlight.png",
         "iconPath": "/images/tab/classic.png",
         "text": "我的订单"
