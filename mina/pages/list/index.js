@@ -68,6 +68,7 @@ Page({
   },
 
   onLogin: function() {
+    console.log(111)
 
     let loginFlag = wx.getStorageSync('skey');
     

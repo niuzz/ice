@@ -24,5 +24,8 @@
       >
       </list-item-cmp>
     </li>
+    <li>
+      <button bindtap='onLogin'>获取用户信息</button>
+    </li>
   </ul>
 </view>
