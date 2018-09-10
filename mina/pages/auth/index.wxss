@@ -1,0 +1,13 @@
+/* pages/auth/index.wxss */
+.container {
+  display: flex;
+  direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 200rpx;
+}
+.row {
+  display: block;
+  margin-bottom: 20rpx;
+}

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/auth/index",
     "pages/list/index",
     "pages/detail/detail",
     "pages/order/index",
@@ -7,7 +8,7 @@
     "pages/sum/index",
     "pages/outlet/index",
     "pages/collaboration/index",
-    "pages/my/index"
+    "pages/my/index" 
   ],
   "window": {
     "backgroundTextStyle": "light",

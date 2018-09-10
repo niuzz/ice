@@ -1,0 +1,17 @@
+<!--pages/auth/index.wxml-->
+<view class='container'>
+  <view class='row'>
+    <text>山楂摄影工作室
+  </text>
+  </view>
+  <view class='row'>
+    <button 
+      open-type='getUserInfo' 
+      bindgetuserinfo='getUserInfo'
+      wx:if="{{authButtonShow}}"
+      >
+      授权登录
+    </button>
+  </view>
+
+</view>
