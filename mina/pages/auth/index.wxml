@@ -10,7 +10,7 @@
       bindgetuserinfo='getUserInfo'
       wx:if="{{authButtonShow}}"
       >
-      授权登录
+      点击授权登录
     </button>
   </view>
 
