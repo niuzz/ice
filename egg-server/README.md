@@ -1,6 +1,6 @@
-# egg wechat server
+# egg-server
 
-
+mina server
 
 ## QuickStart
 

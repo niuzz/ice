@@ -5,7 +5,7 @@ module.exports = app => {
   mongoose.connect('mongodb://127.0.0.1:27017/sandra');
   const Schema = mongoose.Schema;
 
-  const MinaUserSchema = new Schema({
+  const UserSchema = new Schema({
     openid: { type: String, unique: true, required: true },
     session_key: { type: String, unique: true, required: true },
     skey: { type: String, unique: true, required: true },
@@ -21,7 +21,7 @@ module.exports = app => {
     },
   });
 
-  MinaUserSchema.pre('save', function(next) {
+  UserSchema.pre('save', function(next) {
     if (this.isNew) {
       this.meta.createdAt = this.meta.updatedAt = Date.now();
     } else {
@@ -30,5 +30,5 @@ module.exports = app => {
     next();
   });
 
-  return mongoose.model('MinaUser', MinaUserSchema);
+  return mongoose.model('User', UserSchema);
 };

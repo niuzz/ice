@@ -1,8 +1,6 @@
 <!--pages/auth/index.wxml-->
 <view class='container'>
   <view class='row'>
-    <text>山楂摄影工作室
-  </text>
   </view>
   <view class='row'>
     <button 

@@ -1,21 +1,17 @@
 {
-  "name": "egg-wechat-server",
+  "name": "egg-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "mina server",
   "private": true,
   "dependencies": {
+    "crypto": "^1.0.1",
     "egg": "^2.2.1",
-    "egg-bcrypt": "^1.1.0",
     "egg-cors": "^2.1.0",
-    "egg-jwt": "^3.1.2",
     "egg-mongoose": "^3.1.0",
     "egg-scripts": "^2.5.0",
     "egg-validate": "^2.0.1",
-    "lodash": "^4.17.10",
-    "raw-body": "^2.3.3",
-    "request-promise": "^4.2.2",
-    "sha1": "^1.1.1",
-    "xml2js": "^0.4.19"
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -31,8 +27,8 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-egg wechat server",
-    "stop": "egg-scripts stop --title=egg-server-egg wechat server",
+    "start": "egg-scripts start --daemon --title=egg-server-egg-server",
+    "stop": "egg-scripts stop --title=egg-server-egg-server",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
@@ -49,6 +45,6 @@
     "type": "git",
     "url": ""
   },
-  "author": "javanzz@163.com",
+  "author": "niuzz@hotmail.com",
   "license": "MIT"
 }

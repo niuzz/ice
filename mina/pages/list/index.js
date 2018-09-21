@@ -67,5 +67,5 @@ Page({
 
   toDetail: function() {
     // console.log(this.data.itemUrl1)
-  }
+  },
 })

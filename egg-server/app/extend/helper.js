@@ -1,5 +1,4 @@
 'use strict';
-
 const rp = require('request-promise');
 const crypto = require('crypto');
 
@@ -19,7 +18,6 @@ exports.error = (ctx, code, message) => {
   };
   ctx.status = code;
 };
-
 exports.jscode2session = async options => {
   return new Promise(function(resolve, reject) {
     rp(options).then(res => {

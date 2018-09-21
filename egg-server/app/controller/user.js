@@ -2,7 +2,8 @@
 
 const Controller = require('egg').Controller;
 
-class MinaController extends Controller {
+
+class UserController extends Controller {
   constructor(ctx) {
     super(ctx);
 
@@ -11,6 +12,10 @@ class MinaController extends Controller {
       openid: { type: 'string', required: true, allowEmpty: false },
       skey: { type: 'string', required: true, allowEmpty: false },
     };
+  }
+
+  async index() {
+    this.ctx.body = 'index';
   }
 
   async create() {
@@ -29,15 +34,18 @@ class MinaController extends Controller {
 
     const result = await ctx.helper.jscode2session(options);
     const { session_key } = result;
-    const skey = ctx.helper.encryptBySha1(session_key);
-    result.skey = skey;
+
+    const vskey = ctx.helper.encryptBySha1(session_key);
+    result.skey = vskey;
 
     // 校验参数完整
     ctx.validate(this.UserCreateRule, result);
 
-    const res = await ctx.service.mina.create(result);
+    let res = await ctx.service.user.create(result);
+    const { openid, skey } = result;
+    res = { openid, skey };
     ctx.helper.success(ctx, res);
   }
 }
 
-module.exports = MinaController;
+module.exports = UserController;
