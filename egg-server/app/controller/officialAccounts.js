@@ -3,7 +3,7 @@
 const Controller = require('egg').Controller;
 
 const crypto = require('crypto');
-const request = require('request-promise');
+// const request = require('request-promise');
 
 class officialAccountsController extends Controller {
   async listen(ctx) {
@@ -29,9 +29,9 @@ class officialAccountsController extends Controller {
     }
   }
 
-  async fetchToken(ctx) {
+  // async fetchToken(ctx) {
 
-  }
+  // }
 }
 
 module.exports = officialAccountsController;
