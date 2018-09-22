@@ -18,6 +18,14 @@ exports.error = (ctx, code, message) => {
   };
   ctx.status = code;
 };
+
+// 获取 Token
+exports.getAccessToken = ctx => {
+  const bearerToken = ctx.request.header.authorization;
+  return bearerToken && bearerToken.replace('Bearer ', '');
+};
+
+// 微信服务器code换session_key
 exports.jscode2session = async options => {
   return new Promise(function(resolve, reject) {
     rp(options).then(res => {
