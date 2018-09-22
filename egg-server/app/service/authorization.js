@@ -3,12 +3,6 @@
 const Service = require('egg').Service;
 
 class AuthorizationService extends Service {
-  createToken(data) {
-    const { app } = this;
-    return app.jwt.sign(data, app.config.jwt.secret, {
-      expiresIn: '24h',
-    });
-  }
   async apply(_id) {
     const { ctx } = this;
     return ctx.app.jwt.sign({
