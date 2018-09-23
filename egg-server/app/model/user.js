@@ -15,6 +15,8 @@ module.exports = app => {
     province: { type: String },
     country: { type: String },
     avatarUrl: { type: String },
+    mobile: { type: String },
+    realName: { type: String },
     meta: {
       createdAt: {
         type: Date,
