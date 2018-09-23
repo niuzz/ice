@@ -10,4 +10,5 @@ module.exports = app => {
   // router.get('/wechat-auth', controller.auth.listen);
   router.get('/api/user', controller.user.index);
   router.post('/api/user', controller.user.create);
+  router.put('/api/user', controller.user.update);
 };

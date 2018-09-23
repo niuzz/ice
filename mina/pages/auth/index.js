@@ -66,13 +66,20 @@ Page({
 
   onLogin: function () {
     let userInfo = wx.getStorageSync('user');
-    let loginFlag = wx.getStorageSync('skey');
+    let loginFlag = wx.getStorageSync('loginFlag');
     if (loginFlag) {
       // 检查 session_key 是否过期
       wx.checkSession({
         // session_key 有效(未过期)
         success: function () {
           // 业务逻辑处理
+          wx.switchTab({
+            url: '/pages/list/index',
+          })
+          wx.setStorage({
+            key: 'loginFlag',
+            data: true,
+          });
 
         },
         // session_key 过期
@@ -81,59 +88,63 @@ Page({
           wx.login({
             success: function (res) {
               wx.request({
-                url: 'http://127.0.0.1:7001/api/user',
+                url: 'http://natapp.niuzhuangzhi.com/api/user',
                 method: 'post',
                 data: {
                   code: res.code
                 },
                 success: function (response) {
-                  const openid = response.data.data.openid;
-                  const skey = response.data.data.skey;
+                  const _id = response.data.data._id;
                   wx.setStorage({
                     key: 'openid',
                     data: openid,
                   });
                   wx.setStorage({
-                    key: 'skey',
-                    data: skey,
+                    key: 'loginFlag',
+                    data: true,
                   });
                 }
               })
             },
-            fail: function (res) { },
+            fail: function (res) { 
+              wx.setStorage({
+                key: 'loginFlag',
+                data: false,
+              });
+            },
             complete: function (res) { },
           })
         }
       });
     } else {
+      console.log(111111111)
       wx.login({
         success: function (res) {
           wx.request({
-            url: 'http://127.0.0.1:7001/api/user',
+            url: 'http://natapp.niuzhuangzhi.com/api/user',
             method: 'post',
             data: {
               code: res.code
             },
             success: function (response) {
-              const openid = response.data.data.openid;
-              const skey = response.data.data.skey;
-              const id = response.data.data.id
+              const _id = response.data.data._id;
               wx.setStorage({
-                key: 'openid',
-                data: openid,
+                key: '_id',
+                data: _id,
               });
               wx.setStorage({
-                key: 'skey',
-                data: skey,
+                key: 'loginFlag',
+                data: true,
               });
-              wx.setStorage({
-                key: 'id',
-                data: id,
-              })
             }
           })
         },
-        fail: function (res) { },
+        fail: function (res) { 
+          wx.setStorage({
+            key: 'loginFlag',
+            data: false,
+          });
+        },
         complete: function (res) { },
       })
     }
@@ -150,10 +161,32 @@ Page({
   },
 
   getUserInfo(data) {
-    const userInfo = data.detail.userInfo
-    wx.setStorage({
-      key: 'user',
-      data: userInfo
+    const { detail } = data
+    wx.getStorage({
+      key: '_id',
+      success: function(res) {
+        const _id = res.data
+        wx.request({
+          url: 'http://natapp.niuzhuangzhi.com/api/user',
+          method: 'put',
+          data: {
+            detail,
+            _id
+          },
+          success: function (response) {
+            const code = response.data.code 
+            if (code === 200) {
+              wx.setStorage({
+                key: 'loginFlag',
+                data: true,
+              });
+              wx.switchTab({
+                url: '/pages/list/index',
+              })
+            }
+          }
+        })
+      },
     })
   }
 })

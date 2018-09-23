@@ -15,6 +15,16 @@ class UserService extends Service {
     const user = await ctx.model.User.create(payload);
     return user;
   }
+
+  async show(_id) {
+    const minaUser = await this.ctx.model.User.findOne({ _id });
+    return minaUser;
+  }
+
+  async update(_id, userInfo) {
+    const minaUser = await this.ctx.model.User.findByIdAndUpdate({ _id }, userInfo, { new: true });
+    return minaUser;
+  }
 }
 
 

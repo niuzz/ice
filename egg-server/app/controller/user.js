@@ -10,7 +10,6 @@ class UserController extends Controller {
     this.UserCreateRule = {
       session_key: { type: 'string', required: true, allowEmpty: false },
       openid: { type: 'string', required: true, allowEmpty: false },
-      skey: { type: 'string', required: true, allowEmpty: false },
     };
   }
 
@@ -33,18 +32,25 @@ class UserController extends Controller {
     };
 
     const result = await ctx.helper.jscode2session(options);
-    const { session_key } = result;
-
-    const vskey = ctx.helper.encryptBySha1(session_key);
-    result.skey = vskey;
-
+    result.nickName = '';
     // 校验参数完整
     ctx.validate(this.UserCreateRule, result);
 
     let res = await ctx.service.user.create(result);
-    const { openid, skey } = result;
-    res = { openid, skey };
+    const { _id } = res;
+    res = { _id };
     ctx.helper.success(ctx, res);
+  }
+
+  async update() {
+    const { ctx, service } = this;
+    const { _id, detail } = ctx.request.body;
+    const { encryptedData, iv } = detail;
+    const { session_key } = await service.user.show(_id);
+    let userInfo = await ctx.helper.decodeUserInfo(session_key, iv, encryptedData);
+    userInfo = JSON.parse(userInfo);
+    const res = await service.user.update(_id, userInfo);
+    ctx.helper.success(ctx, { _id: res._id });
   }
 }
 

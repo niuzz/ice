@@ -8,7 +8,13 @@ module.exports = app => {
   const UserSchema = new Schema({
     openid: { type: String, unique: true, required: true },
     session_key: { type: String, unique: true, required: true },
-    skey: { type: String, unique: true, required: true },
+    nickName: { type: String },
+    gender: { type: String },
+    language: { type: String },
+    city: { type: String },
+    province: { type: String },
+    country: { type: String },
+    avatarUrl: { type: String },
     meta: {
       createdAt: {
         type: Date,

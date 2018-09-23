@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 exports.success = (ctx, result = null, message = '请求成功', status = 200) => {
   ctx.body = {
-    code: 0,
+    code: 200,
     message,
     data: result,
   };
@@ -36,6 +36,16 @@ exports.jscode2session = async options => {
       }
     });
   });
+};
+
+exports.decodeUserInfo = async (key, iv, crypted) => {
+  crypted = new Buffer(crypted, 'base64');
+  key = new Buffer(key, 'base64');
+  iv = new Buffer(iv, 'base64');
+  const decipher = crypto.createDecipheriv('aes-128-cbc', key, iv);
+  let decoded = decipher.update(crypted, 'base64', 'utf8');
+  decoded += decipher.final('utf8');
+  return decoded;
 };
 
 exports.encryptBySha1 = data => {
