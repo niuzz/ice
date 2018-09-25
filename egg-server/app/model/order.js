@@ -8,7 +8,7 @@ module.exports = app => {
   const OrderSchema = new Schema({
     uid: { type: String },
     type: { type: String },
-    deposite: { type: String },
+    deposite: { type: Number },
     meta: {
       createdAt: {
         type: Date,
