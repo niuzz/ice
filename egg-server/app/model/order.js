@@ -6,9 +6,11 @@ module.exports = app => {
   const Schema = mongoose.Schema;
 
   const OrderSchema = new Schema({
-    uid: { type: String },
-    type: { type: String },
-    deposite: { type: Number },
+    uid: { type: String, required: true },
+    type: { type: String, required: true },
+    deposite: { type: Number, required: true },
+    Date: { type: Date, required: true },
+    period: { type: String, required: true },
     meta: {
       createdAt: {
         type: Date,
@@ -30,5 +32,5 @@ module.exports = app => {
     next();
   });
 
-  return mongoose.model('order', OrderSchema);
+  return mongoose.model('Order', OrderSchema);
 };

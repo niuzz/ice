@@ -11,4 +11,7 @@ module.exports = app => {
   router.get('/api/user', controller.user.index);
   router.post('/api/user', controller.user.create);
   router.put('/api/user', controller.user.update);
+
+  router.get('/api/order', controller.order.index);
+  router.post('/api/order', controller.order.create);
 };
