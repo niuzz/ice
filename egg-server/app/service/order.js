@@ -55,9 +55,14 @@ class OrderService extends Service {
 
   async create(payload) {
     const { ctx } = this;
-    console.log(payload);
     const order = ctx.model.Order.create(payload);
     return order;
+  }
+
+  async show(payload) {
+    const { ctx } = this;
+    const orders = ctx.model.Order.find(payload);
+    return orders;
   }
 }
 

@@ -51,3 +51,12 @@ exports.decodeUserInfo = async (key, iv, crypted) => {
 exports.encryptBySha1 = data => {
   return crypto.createHash('sha1').update(data, 'utf8').digest('hex');
 };
+
+exports.getDate = AddDayCount => {
+  const dd = new Date();
+  dd.setDate(dd.getDate() + parseInt(AddDayCount));// 获取AddDayCount天后的日期
+  const y = dd.getFullYear();
+  const m = (dd.getMonth() + 1) < 10 ? '0' + (dd.getMonth() + 1) : (dd.getMonth() + 1);// 获取当前月份的日期，不足10补0
+  const d = dd.getDate() < 10 ? '0' + dd.getDate() : dd.getDate(); // 获取当前几号，不足10补0
+  return y + '-' + m + '-' + d;
+};
