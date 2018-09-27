@@ -10,6 +10,7 @@ module.exports = app => {
     deposite: { type: Number, required: true },
     Date: { type: Date, required: true },
     period: { type: String, required: true },
+    mobile: { type: String, required: true },
     meta: {
       createdAt: {
         type: Date,
