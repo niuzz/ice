@@ -4,9 +4,8 @@ module.exports = app => {
   const mongoose = app.mongoose;
   mongoose.connect('mongodb://127.0.0.1:27017/sandra');
   const Schema = mongoose.Schema;
-
   const OrderSchema = new Schema({
-    uid: { type: String, required: true },
+    uid: { type: mongoose.Schema.ObjectId, required: true },
     type: { type: String, required: true },
     deposite: { type: Number, required: true },
     Date: { type: Date, required: true },

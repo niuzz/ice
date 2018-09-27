@@ -17,9 +17,13 @@ class OrderController extends Controller {
 
   async index() {
     const { ctx } = this;
-    const payload = ctx.request.body;
+    const payload = ctx.query;
     const res = await ctx.service.order.index(payload);
-    ctx.helper.success(ctx, res);
+    if (res.length > 0) {
+      ctx.helper.success(ctx, res);
+    } else {
+      ctx.helper.error(ctx, 404, '没有相关数据');
+    }
   }
 
   async create() {
