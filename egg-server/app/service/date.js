@@ -7,7 +7,11 @@ class DateService extends Service {
     const { ctx } = this;
     const list = [];
     const denyDate = await ctx.service.date.findAll(ctx.helper.getDate(0));
-    console.log(denyDate);
+    const denyDateList = denyDate.map(item => {
+      let date = item.date;
+      date = date.getTime();
+      return date;
+    });
     for (let i = 0; i < 30; i += 1) {
       const obj = {};
       const ndate = ctx.helper.getDate(i);
@@ -27,7 +31,9 @@ class DateService extends Service {
       });
       obj.date = ndate;
       obj.orders = orders;
-      obj.orders.length >= 2 ? obj.can_order = false : obj.can_order = true;
+      const n = (new Date(ndate)).getTime();
+      const flag = denyDateList.includes(n);
+      flag || obj.orders.length >= 2 ? obj.can_order = false : obj.can_order = true;
       list.push(obj);
     }
     return list;
