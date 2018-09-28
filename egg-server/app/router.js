@@ -16,4 +16,6 @@ module.exports = app => {
   router.post('/api/order', controller.order.create);
 
   router.get('/api/date', controller.date.index);
+  router.put('/api/date', controller.date.update);
+  router.post('/api/date', controller.date.create);
 };

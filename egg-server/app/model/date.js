@@ -4,13 +4,9 @@ module.exports = app => {
   const mongoose = app.mongoose;
   mongoose.connect('mongodb://127.0.0.1:27017/sandra');
   const Schema = mongoose.Schema;
-  const OrderSchema = new Schema({
-    uid: { type: mongoose.Schema.ObjectId, required: true },
-    type: { type: String, required: true },
-    deposite: { type: Number, required: true },
-    date: { type: Date, required: true },
-    period: { type: String, required: true },
-    mobile: { type: String, required: true },
+  const DateSchema = new Schema({
+    date: { type: Date, required: true, unique: true },
+    status: { type: Boolean, required: true, default: false },
     meta: {
       createdAt: {
         type: Date,
@@ -23,7 +19,7 @@ module.exports = app => {
     },
   });
 
-  OrderSchema.pre('save', function(next) {
+  DateSchema.pre('save', function(next) {
     if (this.isNew) {
       this.meta.createdAt = this.meta.updatedAt = Date.now();
     } else {
@@ -32,5 +28,5 @@ module.exports = app => {
     next();
   });
 
-  return mongoose.model('Order', OrderSchema);
+  return mongoose.model('Date', DateSchema);
 };

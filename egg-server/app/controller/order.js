@@ -9,7 +9,7 @@ class OrderController extends Controller {
     this.OrderCreateRule = {
       uid: { type: 'string', required: true, allowEmpty: false },
       type: { type: 'string', required: true, allowEmpty: false },
-      Date: { type: 'date', required: true, allowEmpty: false },
+      date: { type: 'date', required: true, allowEmpty: false },
       period: { type: 'string', required: true, allowEmpty: false },
       deposite: { type: 'number', required: true, allowEmpty: false },
     };
