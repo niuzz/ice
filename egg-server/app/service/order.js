@@ -8,8 +8,13 @@ class OrderService extends Service {
     const { ctx, app } = this;
     const { currentPage, search } = payload;
     const skip = (currentPage - 1) * app.config.pagesize;
-    const totle = await ctx.model.Order.find({ mobile: search }).exec();
-    const sum = totle.length;
+    let total;
+    if (search) {
+      total = await ctx.model.Order.find({ mobile: search }).exec();
+    } else {
+      total = await ctx.model.Order.find({}).exec();
+    }
+    const sum = total.length;
     if (search) {
       const list = await ctx.model.Order.aggregate([
         {
