@@ -117,7 +117,6 @@ Page({
         }
       });
     } else {
-      console.log(111111111)
       wx.login({
         success: function (res) {
           wx.request({
@@ -175,6 +174,7 @@ Page({
           },
           success: function (response) {
             const code = response.data.code 
+            console.log('getInfoSuccess', code)
             if (code === 200) {
               wx.setStorage({
                 key: 'loginFlag',
@@ -184,6 +184,9 @@ Page({
                 url: '/pages/list/index',
               })
             }
+          },
+          fail: function(error) {
+            console.log('error:', error)
           }
         })
       },

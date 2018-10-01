@@ -7,7 +7,7 @@ Component({
     color: String,
     path: String,
     imgUrl: String,
-    title: String
+    title: String,
   },
 
   /**
@@ -22,6 +22,7 @@ Component({
    */
   methods: {
     toDetail: function(event) {
+      wx.setStorageSync('detailType', this.properties.title);
       wx.navigateTo({
         url: this.properties.path,
       })
