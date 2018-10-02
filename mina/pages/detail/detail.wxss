@@ -1,1 +1,12 @@
 /* pages/detail/detail.wxss */
+.container {
+  padding: 20rpx;
+  /* background: -webkit-linear-gradient(to top, #fdbfc8, #fdf1f2); 
+  background: linear-gradient(to top, #fac0c8, #fdf2f3); */
+}
+.container-inner {
+  padding-bottom: 200rpx;
+}
+.img {
+  width: 100%;
+}

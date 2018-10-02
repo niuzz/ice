@@ -1,30 +1,36 @@
 <!--pages/detail/detail.wxml-->
 <view>
-<view>
-<view wx:if="{{ showType == '宠物摄影'}}">
-<view>
-  <image src='/images/pet.jpg' mode="widthFix"></image>
+<view class='container'>
+   <view wx:if="{{ showType == '宠物摄影'}}" class='container-inner'>
+    <view>
+      <image src='/images/pet.jpg' mode="widthFix" class="img"></image>
+    </view>
+    <view>
+      <text>
+      宠物
+      含化妆、服装、精修；精修后的数码底片2张；广告级高清打印照2张
+      · 可预约宠物写真，也可预约主人与宠物的合照，请自带宠物服装、道具和粮食
+      · 适用：小型宠物与铲屎官们
+      </text>
+    </view>
+  </view>
+  <view wx:if="{{ showType == '个人写真'}}" class='container-inner'>
+    <view>
+      <image src='/images/beauty.jpg' mode="widthFix" class='img'></image>
+    </view>
+    <view>
+      <text>
+      闺蜜
+      含化妆、服装、精修；精修后的数码底片2张；广告级高清打印照2张
+      · 世间最美的艳遇，是遇见另一个自己
+      · 时光凝结成照片，在毕业/生日等时刻
+      · 适用：闺蜜/好友
+    </text>
+    </view>
+  </view>
 </view>
-
-  <text>
-  宠物
-  含化妆、服装、精修；精修后的数码底片2张；广告级高清打印照2张
-  · 可预约宠物写真，也可预约主人与宠物的合照，请自带宠物服装、道具和粮食
-  · 适用：小型宠物与铲屎官们
-  </text>
-</view>
-<view wx:if="{{ showType == '个人写真'}}">
-  <text>
-  闺蜜
-  含化妆、服装、精修；精修后的数码底片2张；广告级高清打印照2张
-  · 世间最美的艳遇，是遇见另一个自己
-  · 时光凝结成照片，在毕业/生日等时刻
-  · 适用：闺蜜/好友
-  </text>
-</view>
-</view>
-<order-bar-cmp triggerName="certain" bindcertain="certain">
-  <text>说明</text>
-</order-bar-cmp>
-<modal-cmp show="{{modalShow}}" bindhiddenModal="hiddenModal"></modal-cmp>
+  <order-bar-cmp triggerName="certain" bindcertain="certain">
+    <text>说明</text>
+  </order-bar-cmp>
+  <modal-cmp show="{{modalShow}}" bindhiddenModal="hiddenModal"></modal-cmp>
 </view>

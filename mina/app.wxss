@@ -4,8 +4,8 @@ page{
     font-family: PingFangSC-Thin, source-han-sans-simplified-c,sans-serif;
     font-size:16px;
    
-    background: -webkit-linear-gradient(to top, #fdbfc8, #fdf1f2); 
-    background: linear-gradient(to top, #fac0c8, #fdf2f3);
+    /*background: -webkit-linear-gradient(to top, #fdbfc8, #fdf1f2); 
+    background: linear-gradient(to top, #fac0c8, #fdf2f3);*/
     
   }
 /* font-awesome  */
