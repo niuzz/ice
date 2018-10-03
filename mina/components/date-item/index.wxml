@@ -1,0 +1,11 @@
+<!--components/date-item/index.wxml-->
+<view class='{{ can_order ? "item-wrap disable": "item-wrap" }}'
+      bindtap="click"
+      data-item="{{ item }}">
+  <p>
+  {{ date }}
+  </p>
+  <p>
+  {{ week}} 
+  </p>
+</view>

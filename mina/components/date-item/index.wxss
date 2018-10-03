@@ -1,0 +1,14 @@
+/* components/date-item/index.wxss */
+.item-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #fccfd1;
+  font-size: 32rpx;
+  text-align: center;
+}
+.disable {
+  background: #eee;
+  border: 2px solid #eee;
+}

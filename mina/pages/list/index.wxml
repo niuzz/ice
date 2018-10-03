@@ -1,8 +1,14 @@
 <!--pages/list/index.wxml-->
 <view>
-  <text class='title'>
-    sandra摄影工作室简介
-  </text>
+  
+  <view class='desc'>
+    <text class='title'>
+      sandra摄影工作室
+    </text>
+    <text>
+    sandra摄影工作室，起源于魔幻之都重庆。专注棚内人物肖像拍摄的互联网+轻摄影服务，尊重镜头下的别具一格，以轻配色、轻造型、轻时尚的美学定义，打造更加清爽自然的个人形象展示。轻写真、全家福。为企业和政府提供定制化的影像服务，包括员工证件照、公职证件照、高管形象照、环境形象照、企业团队照等，全面提升政府与企业的形象展示效果。
+    </text>
+  </view>
   <ul class="photo-type-list">
     <li>
       <list-item-cmp 

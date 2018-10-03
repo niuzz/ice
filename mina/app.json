@@ -8,20 +8,21 @@
     "pages/sum/index",
     "pages/outlet/index",
     "pages/collaboration/index",
-    "pages/my/index" 
+    "pages/my/index",
+    "pages/order/order-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F4A0A5",
+    "navigationBarBackgroundColor": "#fccfd1",
     "navigationBarTitleText": "山楂小小屋",
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationStyle": "default"
   },
   "tabBar": {
     "borderStyle": "black",
-    "selectedColor": "#000000",
-    "backgroundColor": "#F4A0A5",
-    "color": "#fff",
+    "selectedColor": "#111",
+    "backgroundColor": "#fccfd1",
+    "color": "#333",
     "list": [
       {
         "pagePath": "pages/list/index",

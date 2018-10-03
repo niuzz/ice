@@ -21,7 +21,7 @@ Component({
     order() {
       // this.triggerEvent(this.properties.triggerName, {})
       wx.navigateTo({
-        url: '/pages/sum/index',
+        url: '/pages/date-list/index',
       })
     },
     showdesc() {

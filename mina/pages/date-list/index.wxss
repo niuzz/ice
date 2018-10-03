@@ -1,1 +1,15 @@
 /* pages/date-list/index.wxss */
+.date-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+.date {
+  box-sizing: border-box;
+  width: 19vw;
+  /* height: 130rpx; */
+  /* padding: 10rpx 5rpx; */
+  margin-bottom: 10rpx;
+
+}

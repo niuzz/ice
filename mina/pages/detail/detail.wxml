@@ -16,16 +16,23 @@
   </view>
   <view wx:if="{{ showType == '个人写真'}}" class='container-inner'>
     <view>
+      <text>
+      轻写真系列
+      LITE PORTRAIT
+      无论是自己还是带上拥有重要回忆的伙伴
+      更自在真切的情感流露定格
+      </text>
+    </view>
+    <view>
       <image src='/images/beauty.jpg' mode="widthFix" class='img'></image>
     </view>
     <view>
       <text>
-      闺蜜
-      含化妆、服装、精修；精修后的数码底片2张；广告级高清打印照2张
-      · 世间最美的艳遇，是遇见另一个自己
-      · 时光凝结成照片，在毕业/生日等时刻
-      · 适用：闺蜜/好友
-    </text>
+      单人
+      含化妆、服装、精修；精修后的数码底片1张；广告级高清打印照1张
+      · 轻搭配、轻配色，更真实自然的个人写真，当下的就是最好的
+      · 适用：4岁以上群体
+      </text>
     </view>
   </view>
 </view>

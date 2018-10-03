@@ -1,2 +1,8 @@
 <!--pages/date-list/index.wxml-->
-<text>pages/date-list/index.wxml</text>
+<view class='date-wrap'>
+  <date-item-cmp wx:for="{{dateList}}" 
+                wx:key="{{item.date}}" 
+                class="date"
+                item="{{item}}">
+  </date-item-cmp>
+</view>
