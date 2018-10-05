@@ -12,6 +12,7 @@ class OrderController extends Controller {
       date: { type: 'date', required: true, allowEmpty: false },
       period: { type: 'string', required: true, allowEmpty: false },
       deposite: { type: 'number', required: true, allowEmpty: false },
+      mobile: { type: 'string' },
     };
   }
 

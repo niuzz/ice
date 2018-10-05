@@ -9,7 +9,9 @@ Page({
     orders: [],
     AM: false,
     PM: false,
-    period: ''
+    period: '',
+    checkeds: [],
+    mobile: ''
   },
 
   /**
@@ -22,7 +24,6 @@ Page({
     const item = wx.getStorage({
       key: 'currentDate',
       success: function(res) {
-        
         res.data.orders.forEach(item => {
           if(item) {
             item.period === 'AM' ? _am = true: _am = false;
@@ -90,22 +91,74 @@ Page({
   },
 
   openSubmit() {
+    if (this.data.checkeds.length > 1 && !this.data.AM && !this.data.PM) {
+      wx.showModal({
+        title: '提示',
+        content: '一次只能选择同一日期单个时间段',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            
+          } 
+        }
+      })
+    } else {
+      const uid = wx.getStorageSync('_id')
+      const detailType = wx.getStorageSync('detailType')
+      const type = detailType === '个人写真'? '2' : '1'
+      const currentDate = wx.getStorageSync('currentDate')
+      const period = this.data.checkeds[0] === 'AM' ? '10:00-13:00' : '13:00-15:00'
+      const deposite = 200
+      const mobile = this.data.mobile
+      const date = currentDate.date
+      wx.request({
+        url: 'http://natapp.niuzhuangzhi.com/api/order',
+        method: 'POST',
+        data: {
+          uid, type, date, period, deposite, mobile
+        },
+        success: function(res) {
+          wx.showModal({
+            title: '提示',
+            content: '预订成功',
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '/pages/my/index',
+                })
+              }
+            }
+          })
+        },
+        fail: function(err) {
+          wx.showToast({
+            title: err,
+          })
+        }
+      })
+    }
     
   },
   checkboxChange(e) {
-    const checkeds = e.detail.value
+    let checkeds = e.detail.value
+    this.setData({
+      checkeds
+    })
     if (checkeds.length === 2 && !this.data.AM && !this.data.PM) {
       wx.showModal({
         title: '提示',
         content: '一次只能选择同一日期单个时间段',
+        showCancel: false,
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击确定')
-          } else {
-            console.log('用户点击取消')
           }
         }
       })
     }
+  },
+  bindMobile(e) {
+    this.setData({
+      mobile: e.detail.value
+    })
   }
 })

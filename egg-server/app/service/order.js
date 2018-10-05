@@ -10,7 +10,7 @@ class OrderService extends Service {
     const skip = (currentPage - 1) * app.config.pagesize;
     let total;
     if (search) {
-      total = await ctx.model.Order.find({ mobile: search }).exec();
+      total = await ctx.model.Order.find({ uid: search }).exec();
     } else {
       total = await ctx.model.Order.find({}).exec();
     }
@@ -18,7 +18,7 @@ class OrderService extends Service {
     if (search) {
       const list = await ctx.model.Order.aggregate([
         {
-          $match: { mobile: search },
+          $match: { uid: app.mongoose.Types.ObjectId(search) },
         },
         {
           $lookup: {
