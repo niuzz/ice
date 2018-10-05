@@ -1,1 +1,13 @@
 /* pages/order/order-detail.wxss */
+.wrap {
+  padding: 20rpx;
+}
+.time-title {
+  font-size: 22rpx;
+  color: rgb(35, 70, 145);
+  padding-top: 20rpx;
+}
+.submit {
+  margin-top: 20rpx;
+  background: #fccfd1
+}

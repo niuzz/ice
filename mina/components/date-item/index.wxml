@@ -1,5 +1,5 @@
 <!--components/date-item/index.wxml-->
-<view class='{{ can_order ? "item-wrap disable": "item-wrap" }}'
+<view class='{{ can_order ? "item-wrap": "item-wrap disable" }}'
       bindtap="click"
       data-item="{{ item }}">
   <p>

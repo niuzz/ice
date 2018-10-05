@@ -44,6 +44,10 @@ Component({
     click(e) {
       const item = e.currentTarget.dataset.item
       if (!item.can_order) return false;
+      wx.setStorage({
+        key: 'currentDate',
+        data: item,
+      })
       wx.navigateTo({
         url: '/pages/order/order-detail',
       })

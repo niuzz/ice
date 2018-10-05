@@ -1,2 +1,15 @@
 <!--pages/order/order-detail.wxml-->
-<text>pages/order/order-detail.wxml</text>
+<view class='wrap'>
+  <text class='title'>
+  {{ date }}
+  </text>
+  <view class='time-title'>
+    <text>预订时间</text>
+  </view>
+
+  <checkbox-group bindchange="checkboxChange">
+    <checkbox checked="{{AM}}" disabled='{{AM}}' value='AM'>AM 10:00--11:00</checkbox>
+    <checkbox checked="{{PM}}" disabled='{{PM}}' value='PM'>PM 13:00--15:00</checkbox>
+  </checkbox-group>
+  <button bindtap='openSubmit' class='submit'>确定</button>
+</view>
