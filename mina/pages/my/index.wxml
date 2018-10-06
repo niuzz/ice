@@ -1,2 +1,7 @@
 <!--pages/my/index.wxml-->
-<text>我的订单</text>
+<view>
+  <text class='title'>我的订单</text>
+  <view wx:for="{{ list }}" wx:key="{{ item._id }}">
+    <my-order-detail-cmp item= "{{ item }}"></my-order-detail-cmp>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<!--components/my-order-detail/index.wxml-->
+<view class='wrap'>
+  <view class='form-item'>
+    <text class="form-title">预订日期:</text>
+    <text> {{ date }} </text>
+  </view>
+  <view class='form-item'>
+    <span class="form-title">预订时间:</span>
+    <span>{{ item.period }}</span>
+  </view>
+  <view class='form-item'>
+    <span class="form-title">预留手机:</span>
+    <span>{{ item.mobile }}</span>
+  </view>
+</view>

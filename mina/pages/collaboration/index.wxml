@@ -1,2 +1,3 @@
 <!--pages/collaboration/index.wxml-->
 <text>商业合作</text>
+<button open-type='contact'> 联系客服 </button>

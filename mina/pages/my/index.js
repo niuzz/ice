@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    list: []
   },
 
   /**
@@ -26,6 +26,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const uid = wx.getStorageSync('_id')
+    const _this = this
+    wx.showLoading({
+      title: '加载中……',
+      mask: true
+    })
+    wx.request({
+      url: 'http://natapp.niuzhuangzhi.com/api/order',
+      data: {
+        currentPage: 1,
+        search: uid
+      },
+      success: function(res) {
+        const { code } = res.data
+        if (code === 200) {
+          _this.setData({
+            list: res.data.data.list
+          })
+        }
+        wx.hideLoading({}) 
+      }
+    })
     
   },
 

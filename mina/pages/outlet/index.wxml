@@ -1,3 +1,19 @@
 <!--pages/outlet/index.wxml-->
-  <text>门店信息
+<view class='wrap'>
+  <text>
+    门店信息
   </text>
+  <map id="map"></map>
+  <view class='checkbox-group'>
+    <checkbox-group>
+      <checkbox>融创.嘉德领馆店</checkbox>
+    </checkbox-group>
+  </view>
+  <view>
+    <list-item-cmp bind:tap="toDetail" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl1}}" title="宠物摄影">
+    </list-item-cmp>
+    <list-item-cmp bind:tap="toDetail" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl1}}" title="宠物摄影">
+    </list-item-cmp>
+  </view>
+  <button class='btn' bindtap='goToDate'>确定</button>
+</view>

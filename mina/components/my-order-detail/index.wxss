@@ -1,0 +1,15 @@
+/* components/my-order-detail/index.wxss */
+.wrap {
+  width: 90%;
+  margin: 40rpx auto;
+  padding: 20rpx;
+  font-size: 26rpx;
+  border: 1rpx solid #fccfd1;
+  box-shadow:2px 2px 5px #fccfd1;
+}
+.form-title {
+  display: inline-block;
+}
+.form-item {
+  padding-top: 20rpx;
+}

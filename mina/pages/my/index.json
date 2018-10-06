@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "my-order-detail-cmp": "/components/my-order-detail/index"
+  }
+}
