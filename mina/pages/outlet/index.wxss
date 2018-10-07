@@ -8,10 +8,18 @@
   box-shadow: 2px 2px 2px #fcc;
 }
 .btn {
-  margin-top: 20rpx;
+  margin-top: 40rpx;
   font-size: 30rpx;
   background: #fcc;
 }
 .checkbox-group {
   margin: 40rpx 0;
+}
+.li-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.li-wrap list-item-cmp {
+  width: 48%;
 }

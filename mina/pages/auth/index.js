@@ -12,7 +12,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中……',
+    })
     this.onLogin();
+
   },
 
   /**
@@ -65,7 +69,6 @@ Page({
   },
 
   onLogin: function () {
-    let userInfo = wx.getStorageSync('user');
     let loginFlag = wx.getStorageSync('loginFlag');
     if (loginFlag) {
       // 检查 session_key 是否过期
@@ -73,13 +76,15 @@ Page({
         // session_key 有效(未过期)
         success: function () {
           // 业务逻辑处理
-          wx.switchTab({
-            url: '/pages/list/index',
-          })
+          
           wx.setStorage({
             key: 'loginFlag',
             data: true,
           });
+          wx.switchTab({
+            url: '/pages/list/index',
+          });
+          wx.hideLoading()
 
         },
         // session_key 过期
@@ -96,10 +101,6 @@ Page({
                 success: function (response) {
                   const _id = response.data.data._id;
                   wx.setStorage({
-                    key: 'openid',
-                    data: openid,
-                  });
-                  wx.setStorage({
                     key: 'loginFlag',
                     data: true,
                   });
@@ -112,7 +113,9 @@ Page({
                 data: false,
               });
             },
-            complete: function (res) { },
+            complete: function (res) {
+              wx.hideLoading()
+             },
           })
         }
       });
@@ -126,7 +129,7 @@ Page({
               code: res.code
             },
             success: function (response) {
-              const _id = response.data.data._id;
+              const { _id } = response.data.data;
               wx.setStorage({
                 key: '_id',
                 data: _id,
@@ -135,7 +138,13 @@ Page({
                 key: 'loginFlag',
                 data: true,
               });
-            }
+            },
+            fail: function (response) {
+              wx.setStorage({
+                key: 'loginFlag',
+                data: false,
+              })
+            }    
           })
         },
         fail: function (res) { 
@@ -143,15 +152,18 @@ Page({
             key: 'loginFlag',
             data: false,
           });
+          
         },
-        complete: function (res) { },
+        complete: function (res) {
+          wx.hideLoading()
+         },
       })
     }
-    
+    let userInfo = wx.getStorageSync('user');
     if (userInfo) {
-      wx.switchTab({
-        url: '/pages/list/index',
-      })
+      // wx.switchTab({
+      //   url: '/pages/list/index',
+      // })
     } else {
       this.setData({
         authButtonShow:true
@@ -161,6 +173,9 @@ Page({
 
   getUserInfo(data) {
     const { detail } = data
+    wx.showLoading({
+      title: '加载中……',
+    })
     wx.getStorage({
       key: '_id',
       success: function(res) {
@@ -173,23 +188,31 @@ Page({
             _id
           },
           success: function (response) {
-            const code = response.data.code 
-            console.log('getInfoSuccess', code)
+            const { code } = response.data
             if (code === 200) {
               wx.setStorage({
                 key: 'loginFlag',
                 data: true,
               });
+              wx.setStorage({
+                key: 'user',
+                data: response.data.data,
+              })
               wx.switchTab({
                 url: '/pages/list/index',
               })
             }
+            wx.hideLoading()
           },
           fail: function(error) {
             console.log('error:', error)
+            wx.hideLoading();
           }
         })
       },
+      complete: function(res) {
+        wx.hideLoading()
+      }
     })
   }
 })

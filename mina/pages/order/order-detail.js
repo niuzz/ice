@@ -103,11 +103,19 @@ Page({
         }
       })
     } else {
+      if (!this.data.mobile || !(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(this.data.mobile))) {
+        wx.showToast({
+          title: '手机格式错误',
+          icon: 'none',
+          duration: 2000
+        })
+        return false
+      }
       const uid = wx.getStorageSync('_id')
       const detailType = wx.getStorageSync('detailType')
       const type = detailType === '个人写真'? '2' : '1'
       const currentDate = wx.getStorageSync('currentDate')
-      const period = this.data.checkeds[0] === 'AM' ? '10:00-13:00' : '13:00-15:00'
+      const period = this.data.checkeds[0] === 'AM' ? '10:00-11:00' : '13:00-15:00'
       const deposite = 200
       const mobile = this.data.mobile
       const date = currentDate.date
@@ -141,6 +149,14 @@ Page({
   },
   checkboxChange(e) {
     let checkeds = e.detail.value
+    if (this.data.AM) {
+      let index = checkeds.indexOf('AM')
+      checkeds.splice(index, 1)
+    } 
+    if (this.data.PM) {
+      let index = checkeds.indexOf('PM')
+      checkeds.splice(index, 1)
+    } 
     this.setData({
       checkeds
     })

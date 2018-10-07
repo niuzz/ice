@@ -26,6 +26,9 @@ Component({
       wx.navigateTo({
         url: this.properties.path,
       })
+    },
+    choose: function(event) {
+      wx.setStorageSync('detailType', this.properties.title)
     }
   }
 })

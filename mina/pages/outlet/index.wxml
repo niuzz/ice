@@ -9,10 +9,10 @@
       <checkbox>融创.嘉德领馆店</checkbox>
     </checkbox-group>
   </view>
-  <view>
-    <list-item-cmp bind:tap="toDetail" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl1}}" title="宠物摄影">
+  <view class='li-wrap'>
+    <list-item-cmp bind:tap="choose" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl1}}" title="宠物摄影">
     </list-item-cmp>
-    <list-item-cmp bind:tap="toDetail" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl1}}" title="宠物摄影">
+    <list-item-cmp bind:tap="choose" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl2}}" title="个人写真">
     </list-item-cmp>
   </view>
   <button class='btn' bindtap='goToDate'>确定</button>
