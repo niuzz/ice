@@ -28,6 +28,7 @@ Component({
       })
     },
     choose: function(event) {
+      
       wx.setStorageSync('detailType', this.properties.title)
     }
   }

@@ -3,7 +3,7 @@
   <text>
     门店信息
   </text>
-  <map id="map"></map>
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale='{{ 18 }}'></map>
   <view class='checkbox-group'>
     <checkbox-group>
       <checkbox>融创.嘉德领馆店</checkbox>
