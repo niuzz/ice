@@ -77,8 +77,18 @@ Page({
   },
 
   goToDate() {
+    // if (this.data.outlets.length < 1) {
+    //   wx.showToast({
+    //     title: '请选择店面',
+    //     icon: 'none',
+    //   })
+    //   return false
+    // }
     wx.navigateTo({
       url: '/pages/date-list/index',
     })
+  },
+  checkboxChange(e) {
+    wx.setStorageSync('detailType', e.detail.value)
   }
 })

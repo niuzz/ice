@@ -4,16 +4,16 @@
     门店信息
   </text>
   <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale='{{ 18 }}'></map>
+  融创.嘉德领馆店
   <view class='checkbox-group'>
-    <checkbox-group>
-      <checkbox>融创.嘉德领馆店</checkbox>
-    </checkbox-group>
+    <radio-group bindchange="checkboxChange">
+      <label class="radio">
+        <radio value="宠物摄影"/>宠物摄影
+      </label>
+      <label class="radio">
+        <radio value="个人写真"/>个人写真
+      </label>
+    </radio-group>
   </view>
-  <view class='li-wrap'>
-    <list-item-cmp bind:tap="choose" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl1}}" title="宠物摄影">
-    </list-item-cmp>
-    <list-item-cmp bind:tap="choose" color="{{itemColor}}" path="/pages/detail/detail" imgUrl="{{itemUrl2}}" title="个人写真">
-    </list-item-cmp>
-  </view>
-  <button class='btn' bindtap='goToDate'>确定</button>
+  <button class='btn' bindtap='goToDate'>立即预订</button>
 </view>

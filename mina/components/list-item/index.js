@@ -8,6 +8,7 @@ Component({
     path: String,
     imgUrl: String,
     title: String,
+    bindfunc: String
   },
 
   /**
@@ -28,7 +29,7 @@ Component({
       })
     },
     choose: function(event) {
-      
+      console.log(222)
       wx.setStorageSync('detailType', this.properties.title)
     }
   }

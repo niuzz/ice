@@ -1,6 +1,6 @@
 <!--components/list-item/index.wxml-->
 <view 
-bindtap='toDetail' 
+bindtap='{{ this.properties.bindfunc === "choose"? choose : toDetail }}' 
 class='container' 
 style="background-color: {{color}}">
       <image 
