@@ -1,1 +1,12 @@
 /* pages/collaboration/index.wxss */
+.wrap {
+  padding: 20rpx;
+}
+.title {
+  display: block;
+  margin-bottom: 20rpx;
+}
+.btn {
+  margin-top: 40rpx;
+  background: #fccfd1;
+}
