@@ -66,6 +66,7 @@ Page({
   },
 
   toDetail: function() {
+    console.log(111)
     // console.log(this.data.itemUrl1)
   },
 })

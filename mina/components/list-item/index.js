@@ -23,6 +23,7 @@ Component({
    */
   methods: {
     toDetail: function(event) {
+      console.log(111)
       wx.setStorageSync('detailType', this.properties.title);
       wx.navigateTo({
         url: this.properties.path,
