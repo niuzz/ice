@@ -69,6 +69,9 @@ Page({
   },
 
   onLogin: function () {
+    // wx.setEnableDebug({
+    //   enableDebug: true
+    // })
     let loginFlag = wx.getStorageSync('loginFlag');
     if (loginFlag) {
       // 检查 session_key 是否过期
@@ -76,7 +79,6 @@ Page({
         // session_key 有效(未过期)
         success: function () {
           // 业务逻辑处理
-          
           wx.setStorage({
             key: 'loginFlag',
             data: true,
@@ -85,7 +87,6 @@ Page({
             url: '/pages/list/index',
           });
           wx.hideLoading()
-
         },
         // session_key 过期
         fail: function () {
@@ -100,6 +101,10 @@ Page({
                 },
                 success: function (response) {
                   const _id = response.data.data._id;
+                  wx.setStorage({
+                    key: '_id',
+                    data: _id,
+                  });
                   wx.setStorage({
                     key: 'loginFlag',
                     data: true,
@@ -140,6 +145,7 @@ Page({
               });
             },
             fail: function (response) {
+              console.log(response)
               wx.setStorage({
                 key: 'loginFlag',
                 data: false,
@@ -147,12 +153,11 @@ Page({
             }    
           })
         },
-        fail: function (res) { 
+        fail: function (res) {
           wx.setStorage({
             key: 'loginFlag',
             data: false,
           });
-          
         },
         complete: function (res) {
           wx.hideLoading()
@@ -161,9 +166,9 @@ Page({
     }
     let userInfo = wx.getStorageSync('user');
     if (userInfo) {
-      // wx.switchTab({
-      //   url: '/pages/list/index',
-      // })
+      wx.switchTab({
+        url: '/pages/list/index',
+      })
     } else {
       this.setData({
         authButtonShow:true
@@ -209,6 +214,9 @@ Page({
             wx.hideLoading();
           }
         })
+      },
+      fail: function(res) {
+        console.log(res)
       },
       complete: function(res) {
         wx.hideLoading()

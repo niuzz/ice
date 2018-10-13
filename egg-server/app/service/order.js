@@ -30,6 +30,7 @@ class OrderService extends Service {
         },
         { $skip: parseInt(skip) },
         { $limit: app.config.pagesize },
+        { $sort: { date: -1 } },
       ]);
       const nlist = list.map(item => {
         const { nickName, _id } = item.user[0];
@@ -49,6 +50,7 @@ class OrderService extends Service {
       },
       { $skip: parseInt(skip) },
       { $limit: app.config.pagesize },
+      { $sort: { date: -1 } },
     ]);
     const nlist = list.map(item => {
       const { nickName, _id } = item.user[0];

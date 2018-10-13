@@ -20,7 +20,6 @@ class UserController extends Controller {
   async create() {
     const { ctx, app } = this;
     const code = ctx.request.body.code;
-
     const apiUrl = 'https://api.weixin.qq.com/sns/jscode2session';
     const appId = app.config.authorization.minaAppID;
     const appSecret = app.config.authorization.minaSecret;
