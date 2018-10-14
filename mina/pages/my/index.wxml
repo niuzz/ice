@@ -1,6 +1,7 @@
 <!--pages/my/index.wxml-->
 <view>
   <text class='title'>我的订单</text>
+  <button class="admin" wx:if="{{ isAdmin }}" bindtap='toAdmin'>管理入口</button>
   <view wx:for="{{ list }}" wx:key="{{ item._id }}">
     <my-order-detail-cmp item= "{{ item }}"></my-order-detail-cmp>
   </view>

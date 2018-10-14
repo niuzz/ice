@@ -2,3 +2,8 @@
 .title {
   padding: 20rpx 0 0 20rpx;
 }
+.admin {
+  width: 30vw;
+  background: rgb(56, 52, 1);
+  color: #fccfd1;
+}

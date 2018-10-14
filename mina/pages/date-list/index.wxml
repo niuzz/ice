@@ -5,4 +5,11 @@
                 class="date"
                 item="{{item}}">
   </date-item-cmp>
+  <view>
+    <ul class="desc">
+      <li>图例说明：支持30天内的预订</li>
+      <li>灰色：已预订</li>
+      <li>白的：支持预订</li>
+    </ul>
+  </view>
 </view>
