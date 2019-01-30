@@ -6,4 +6,5 @@
   width: 30vw;
   background: rgb(56, 52, 1);
   color: #fccfd1;
+  font-size: 20rpx;
 }
